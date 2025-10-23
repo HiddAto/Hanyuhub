@@ -2,6 +2,7 @@ package com.example.hanyuhub.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -37,7 +38,8 @@ fun PantallaHomeProfesor(
     nombre: String ,
     apellido: String,
     email: String,
-    pass: String) {
+    pass: String,
+    cursos: String) {
     // https://m3.material.io/components
     var presses by remember { mutableIntStateOf(0) }
     // Le da función para hacer scroll al topbar
@@ -74,10 +76,12 @@ fun PantallaHomeProfesor(
                     )
                 }
 
+                Spacer(modifier = Modifier.weight(1f))
+
                 // Botón de perfil
                 IconButton(
                     onClick = {
-                        navController.navigate("perfilProfesor/$nombre/$apellido/$email/$pass")
+                        navController.navigate("perfilProfesor/$nombre/$apellido/$email/$pass/$cursos")
                     }
                 ) {
                     Icon(
@@ -106,6 +110,8 @@ fun PantallaHomeProfesor(
                     Tu correo es: $email
                     
                     Tu cotraseña es: $pass
+                    
+                    Tus cursos son: $cursos
 
                     You have pressed the floating action button $presses times.
                 """.trimIndent(),

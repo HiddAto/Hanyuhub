@@ -10,8 +10,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -20,7 +21,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
@@ -31,7 +31,8 @@ fun PantallaPerfilAlumno(
     nombre: String,
     apellido: String,
     email: String,
-    pass: String
+    pass: String,
+    curso: String
 ) {
     Scaffold(
         topBar = {
@@ -51,7 +52,7 @@ fun PantallaPerfilAlumno(
                 contentColor = MaterialTheme.colorScheme.primary,
             ) {
                 Button(
-                    onClick = { navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass") },
+                    onClick = { navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso") },
                     modifier = Modifier
                         .height(55.dp)
                         .fillMaxWidth(),
@@ -68,17 +69,70 @@ fun PantallaPerfilAlumno(
                 .padding(innerPadding)
                 .fillMaxSize(),
             horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Top
+            verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            Text("Tus datos", style = MaterialTheme.typography.headlineSmall)
-            Spacer(modifier = Modifier.height(50.dp))
-            Text("Nombre: $nombre $apellido", style = MaterialTheme.typography.headlineSmall)
-            Spacer(modifier = Modifier.height(30.dp))
-            Text("Correo: $email", style = MaterialTheme.typography.headlineSmall)
-            Spacer(modifier = Modifier.height(30.dp))
-            Text("Contraseña: $pass", style = MaterialTheme.typography.headlineSmall)
-            Spacer(modifier = Modifier.height(30.dp))
-            Text("Tu curso: A-2", style = MaterialTheme.typography.headlineSmall)
+            Spacer(modifier = Modifier.height(10.dp))
+            Column(Modifier
+                .align(Alignment.CenterHorizontally)
+            ) {
+                Text("Tus datos", style = MaterialTheme.typography.headlineMedium)
+            }
+
+            // Tarjeta de nombre
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                ),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(20.dp)) {
+                    Text("Nombre completo", style = MaterialTheme.typography.titleMedium)
+                    Text("$nombre $apellido", style = MaterialTheme.typography.headlineSmall)
+                }
+            }
+
+            // Tarjeta de correo
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                ),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(20.dp)) {
+                    Text("Correo electrónico", style = MaterialTheme.typography.titleMedium)
+                    Text(email, style = MaterialTheme.typography.headlineSmall)
+                }
+            }
+
+            // Tarjeta de contraseña
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                ),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(20.dp)) {
+                    Text("Contraseña", style = MaterialTheme.typography.titleMedium)
+                    Text(pass, style = MaterialTheme.typography.headlineSmall)
+                }
+            }
+
+            // Tarjeta del curso
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                ),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(20.dp)) {
+                    Text("Curso asignado", style = MaterialTheme.typography.titleMedium)
+                    Text(curso, style = MaterialTheme.typography.headlineSmall)
+                }
+            }
         }
     }
 }

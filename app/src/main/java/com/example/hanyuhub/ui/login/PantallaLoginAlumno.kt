@@ -167,7 +167,7 @@ fun PantallaLoginAlumno(navController: NavController) {
 
                     // Si todo esta correcto se ingresa
                     if (!showEmailVacio && !showPasswordVacio && isEmailValido) {
-                        navController.navigate("homeAlumno/NombreTest/ApellidoTest/$email/$pass")
+                        navController.navigate("homeAlumno/NombreTest/ApellidoTest/$email/$pass/A-2")
                     }
                 },
                 modifier = Modifier
