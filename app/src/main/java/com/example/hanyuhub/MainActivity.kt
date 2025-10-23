@@ -47,64 +47,72 @@ fun MyApp(){
         composable("loginProfesor") { PantallaLoginProfesor(navController) }
         composable("loginAlumno") { PantallaLoginAlumno(navController) }
         composable(
-            "homeAlumno/{nombre}/{apellido}/{email}/{pass}",
+            "homeAlumno/{nombre}/{apellido}/{email}/{pass}/{curso}",
             arguments = listOf(
                 navArgument("nombre"){ type = NavType.StringType },
                 navArgument("apellido"){ type = NavType.StringType },
                 navArgument("email"){ type = NavType.StringType },
-                navArgument("pass"){ type = NavType.StringType }
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
             )
-            ) { backStackEntry ->
-            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
-            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
-            val email = backStackEntry.arguments?.getString("email").orEmpty()
-            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
-            PantallaHomeAlumno(navController, nombre, apellido, email, pass)
+        ) { backStackEntry ->
+        val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+        val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+        val email = backStackEntry.arguments?.getString("email").orEmpty()
+        val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+        val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+        PantallaHomeAlumno(navController, nombre, apellido, email, pass, curso)
         }
         composable(
-            "perfilAlumno/{nombre}/{apellido}/{email}/{pass}",
+            "perfilAlumno/{nombre}/{apellido}/{email}/{pass}/{curso}",
             arguments = listOf(
                 navArgument("nombre"){ type = NavType.StringType },
                 navArgument("apellido"){ type = NavType.StringType },
                 navArgument("email"){ type = NavType.StringType },
-                navArgument("pass"){ type = NavType.StringType }
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
             )
         ) { backStackEntry ->
             val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
             val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
             val email = backStackEntry.arguments?.getString("email").orEmpty()
             val pass = backStackEntry.arguments?.getString("pass").orEmpty()
-            PantallaPerfilAlumno(navController, nombre, apellido, email, pass)
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaPerfilAlumno(navController, nombre, apellido, email, pass, curso)
         }
         composable(
-            "homeProfesor/{nombre}/{apellido}/{email}/{pass}",
+            "homeProfesor/{nombre}/{apellido}/{email}/{pass}/{cursos}",
             arguments = listOf(
                 navArgument("nombre"){ type = NavType.StringType },
                 navArgument("apellido"){ type = NavType.StringType },
                 navArgument("email"){ type = NavType.StringType },
-                navArgument("pass"){ type = NavType.StringType }
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("cursos"){ type = NavType.StringType }
             )
         ) { backStackEntry ->
             val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
             val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
             val email = backStackEntry.arguments?.getString("email").orEmpty()
             val pass = backStackEntry.arguments?.getString("pass").orEmpty()
-            PantallaHomeProfesor(navController, nombre, apellido, email, pass)
+            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
+            PantallaHomeProfesor(navController, nombre, apellido, email, pass, cursos)
         }
         composable(
-            "perfilProfesor/{nombre}/{apellido}/{email}/{pass}",
+            "perfilProfesor/{nombre}/{apellido}/{email}/{pass}/{cursos}",
             arguments = listOf(
                 navArgument("nombre"){ type = NavType.StringType },
                 navArgument("apellido"){ type = NavType.StringType },
                 navArgument("email"){ type = NavType.StringType },
-                navArgument("pass"){ type = NavType.StringType }
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("cursos"){ type = NavType.StringType }
             )
         ) { backStackEntry ->
             val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
             val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
             val email = backStackEntry.arguments?.getString("email").orEmpty()
             val pass = backStackEntry.arguments?.getString("pass").orEmpty()
-            PantallaPerfilProfesor(navController, nombre, apellido, email, pass)
+            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
+            PantallaPerfilProfesor(navController, nombre, apellido, email, pass, cursos)
         }
     }
 }

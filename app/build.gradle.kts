@@ -71,4 +71,7 @@ dependencies {
 
     // Funcion para navegar entre pantallas
     implementation("androidx.navigation:navigation-compose:2.9.5")
+
+    // Iconos
+    implementation("androidx.compose.material:material-icons-extended")
 }

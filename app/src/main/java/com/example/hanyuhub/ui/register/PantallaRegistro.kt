@@ -11,11 +11,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -39,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hanyuhub.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaRegistro(navController: NavController) {
     var nombre by remember { mutableStateOf("") }
@@ -83,6 +83,7 @@ fun PantallaRegistro(navController: NavController) {
                 .fillMaxSize()
                 .padding(16.dp)
                 .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
                 .clickable(
                     // null interactionSource e indication = null
                     // para que no muestre efecto al tocar
@@ -239,7 +240,7 @@ fun PantallaRegistro(navController: NavController) {
                     if (!showEmailVacio && !showPasswordVacio && isEmailValido
                         && !showNombreVacio && !showApellidoVacio && !showPassSecVacio
                         &&!showPasswordsDif) {
-                        navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass")
+                        navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/A-2")
                     }
                 },
                 modifier = Modifier
