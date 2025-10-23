@@ -3,8 +3,10 @@ package com.example.hanyuhub.ui.start
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
@@ -42,9 +44,12 @@ fun PantallaInicio(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
+                .height(70.dp)
         ) {
             Text(text = "Iniciar sesión")
         }
+
+        Spacer(modifier = Modifier.height(25.dp))
 
         // Botón para ir al Registro
         Button(
@@ -52,6 +57,7 @@ fun PantallaInicio(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
+                .height(70.dp)
         ) {
             Text(text = "Crear cuenta")
         }

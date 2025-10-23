@@ -1,6 +1,7 @@
 package com.example.hanyuhub.ui.login
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -40,18 +42,6 @@ import com.example.hanyuhub.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaLogin(navController: NavController) {
-    var email by remember { mutableStateOf("") }
-    var pass by remember { mutableStateOf("") }
-    var checked by remember { mutableStateOf(false) }
-    val isEmailValido = remember(email) {
-        android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-    var showEmailVacio by remember { mutableStateOf(false) }
-    var showPasswordVacio by remember { mutableStateOf(false) }
-
-
-
-    // Utilizamos Scaffold para la estructura de la pantalla
     Scaffold(
         bottomBar = {
             BottomAppBar(
@@ -61,106 +51,52 @@ fun PantallaLogin(navController: NavController) {
                 IconButton(onClick = { navController.navigate("start") }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Localized description"
+                        contentDescription = "Volver atrás"
                     )
                 }
             }
         }
     ) { innerPadding ->
         Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
-                .padding(innerPadding) // Aplica innerPadding aquí
+                .padding(innerPadding)
+                .padding(32.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Título inicial
-            Text(
-                text = "Iniciar Sesión",
-                style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-
-            // Imagen de logo
+            // Logo o imagen de bienvenida
             Image(
-                painter = painterResource(R.drawable.ic_login),
-                contentDescription = "Logo de login",
-                modifier = Modifier.size(100.dp)
+                painter = painterResource(id = R.drawable.ic_login), // puedes usar otro recurso
+                contentDescription = "Logo Inicio Sesion",
+                modifier = Modifier.size(150.dp)
             )
 
+            // Espacio
+            androidx.compose.foundation.layout.Spacer(modifier = Modifier.size(24.dp))
 
-            // Campo para el correo
-            OutlinedTextField(
-                value = email,
-                onValueChange = {
-                    email = it
-                    showEmailVacio = false },
-                label = { Text("Correo") },
-                // Existe el error si el email no es válido y no está vacío
-                isError = !isEmailValido && email.isNotEmpty() || showEmailVacio,
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth(),
-                // Se genera un texto de error por debajo
-                supportingText = {
-                    when {
-                        showEmailVacio -> Text("Ingrese su correo")
-                        !isEmailValido && email.isNotEmpty() -> Text("Correo inválido")
-                    }
-                }
-            )
-
-            // Campo para la contraseña
-            OutlinedTextField(
-                value = pass,
-                onValueChange = {
-                    pass = it
-                    showPasswordVacio = false },
-                label = { Text("Contraseña") },
-                isError = showPasswordVacio,
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth(),
-                // Cambia para mostrar o ocultar la contraseña
-                visualTransformation = if (checked) VisualTransformation.None else PasswordVisualTransformation(),
-                supportingText = {
-                    if (showPasswordVacio) Text("Ingrese su contraseña")
-                }
-            )
-
-            Spacer(modifier = Modifier.height(5.dp))
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start, // Alinea a la izquierda
-                modifier = Modifier.fillMaxWidth()
+            // Botón para ir al Login
+            Button(
+                onClick = { navController.navigate("loginAlumno") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp)
+                    .height(70.dp)
             ) {
-                Checkbox(
-                    checked = checked,
-                    onCheckedChange = { checked = it }
-                )
-                Text("Mostrar contraseña")
+                Text(text = "INICIAR SESIÓN COMO ALUMNO")
             }
 
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(25.dp))
 
-            // Botón de ingreso
+            // Botón para ir al Registro
             Button(
-                onClick = {
-                    // Se revisan si los valores estan vacios
-                    showEmailVacio = email.isBlank()
-                    showPasswordVacio = pass.isBlank()
-
-                    // Si todo esta correcto se ingresa
-                    if (!showEmailVacio && !showPasswordVacio && isEmailValido) {
-                        navController.navigate("home/$email")
-                    }
-                },
+                onClick = { navController.navigate("loginProfesor") },
                 modifier = Modifier
-                    .height(55.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(5.dp)
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp)
+                    .height(70.dp)
             ) {
-                Text("Ingresar")
+                Text(text = "INICIAR SESIÓN COMO PROFESOR")
             }
         }
     }
