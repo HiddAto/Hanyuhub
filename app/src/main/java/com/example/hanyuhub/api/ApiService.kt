@@ -10,7 +10,9 @@ interface ApiService {
 
     //@Headers("Content-Type: application/json")
     @POST("/usuario/login")
-    suspend fun login(
-        @Body loginDto: LoginDto
-    ): Response<UsuarioDto>
+    suspend fun login(@Body loginDto: LoginDto): Response<UsuarioDto>
+
+    @POST("usuario/registro")
+    suspend fun registrarUsuario(@Body usuario: UsuarioDto): Response<Map<String, Any>>
+
 }

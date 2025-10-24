@@ -29,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,15 +40,22 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hanyuhub.R
+import com.example.hanyuhub.model.UsuarioDto
+import com.example.hanyuhub.repository.UsuarioRepository
+import kotlinx.coroutines.launch
 
 @Composable
 fun PantallaRegistro(navController: NavController) {
+
+    // Campos del formulario
     var nombre by remember { mutableStateOf("") }
     var apellido by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var pass by remember { mutableStateOf("") }
     var passSec by remember { mutableStateOf("") }
     var checked by remember { mutableStateOf(false) }
+
+    //Validaciones
     val isEmailValido = remember(email) {
         android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
@@ -57,8 +65,12 @@ fun PantallaRegistro(navController: NavController) {
     var showApellidoVacio by remember { mutableStateOf(false) }
     var showPassSecVacio by remember { mutableStateOf(false) }
     var showPasswordsDif by remember { mutableStateOf(false) }
+    var mensaje by remember { mutableStateOf("") }
 
+    // Para ocultar teclado
     val focusManager = LocalFocusManager.current
+    val scope = rememberCoroutineScope()
+    val usuarioRepository = remember { UsuarioRepository() }
 
     // Utilizamos Scaffold para la estructura de la pantalla
     Scaffold(
@@ -240,6 +252,26 @@ fun PantallaRegistro(navController: NavController) {
                     if (!showEmailVacio && !showPasswordVacio && isEmailValido
                         && !showNombreVacio && !showApellidoVacio && !showPassSecVacio
                         &&!showPasswordsDif) {
+                        val nuevoUsuario = UsuarioDto(
+                            nombre = nombre,
+                            apellido = apellido,
+                            mail = email,
+                            pass = pass,
+                            rol = "estudiante"
+                        )
+
+                        scope.launch {
+                            try {
+                                val response = usuarioRepository.registrarUsuario(nuevoUsuario)
+                                if (response.isSuccessful) {
+                                    mensaje = "Usuario registrado correctamente"
+                                } else {
+                                    mensaje = "Error: ${response.message()}"
+                                }
+                            } catch (e: Exception) {
+                                mensaje = "Error de conexión: ${e.localizedMessage}"
+                            }
+                        }
                         navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/A-2")
                     }
                 },

@@ -32,6 +32,10 @@
         "source": "com.example.hanyuhub.app-main-52:/drawable/alumno1.jpg"
     },
     {
+        "merged": "com.example.hanyuhub.app-debug-50:/xml_network_security_config.xml.flat",
+        "source": "com.example.hanyuhub.app-main-52:/xml/network_security_config.xml"
+    },
+    {
         "merged": "com.example.hanyuhub.app-debug-50:/mipmap-mdpi_ic_launcher_hanyuhub_foreground.webp.flat",
         "source": "com.example.hanyuhub.app-main-52:/mipmap-mdpi/ic_launcher_hanyuhub_foreground.webp"
     },

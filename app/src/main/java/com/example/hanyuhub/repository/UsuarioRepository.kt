@@ -6,9 +6,15 @@ import com.example.hanyuhub.model.UsuarioDto
 import com.example.hanyuhub.network.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.Response
 
 class UsuarioRepository {
 
+    private val api = RetrofitClient.apiService
+
+    suspend fun registrarUsuario(usuario: UsuarioDto): Response<Map<String, Any>> {
+        return api.registrarUsuario(usuario)
+    }
     suspend fun login(email: String, pass: String): UsuarioDto? {
         return withContext(Dispatchers.IO) {
             try {
