@@ -239,7 +239,7 @@ fun PantallaRegistro(navController: NavController) {
             // Botón de ingreso
             Button(
                 onClick = {
-                    // Se revisan si los valores estan vacios
+                    // Validaciones locales
                     showEmailVacio = email.isBlank()
                     showPasswordVacio = pass.isBlank()
                     showNombreVacio = nombre.isBlank()
@@ -248,31 +248,43 @@ fun PantallaRegistro(navController: NavController) {
 
                     showPasswordsDif = pass != passSec && passSec.isNotBlank()
 
-                    // Si todo esta correcto se ingresa
                     if (!showEmailVacio && !showPasswordVacio && isEmailValido
                         && !showNombreVacio && !showApellidoVacio && !showPassSecVacio
-                        &&!showPasswordsDif) {
-                        val nuevoUsuario = UsuarioDto(
-                            nombre = nombre,
-                            apellido = apellido,
-                            mail = email,
-                            pass = pass,
-                            rol = "estudiante"
-                        )
-
+                        && !showPasswordsDif
+                    ) {
+                        // Inicia la corrutina para llamadas a API
                         scope.launch {
                             try {
-                                val response = usuarioRepository.registrarUsuario(nuevoUsuario)
-                                if (response.isSuccessful) {
-                                    mensaje = "Usuario registrado correctamente"
+                                // Verifica si el email ya existe
+                                val emailExiste = usuarioRepository.validarEmail(email)
+
+                                if (emailExiste) {
+                                    // El correo ya está en uso, muestra mensaje de error
+                                    mensaje = "El correo electrónico ya está registrado."
                                 } else {
-                                    mensaje = "Error: ${response.message()}"
+                                    // Email disponible, crear UsuarioDto
+                                    val nuevoUsuario = UsuarioDto(
+                                        nombre = nombre,
+                                        apellido = apellido,
+                                        mail = email,
+                                        pass = pass,
+                                        rol = "estudiante"
+                                    )
+
+                                    val response = usuarioRepository.registrarUsuario(nuevoUsuario)
+
+                                    if (response.isSuccessful) {
+                                        mensaje = "Usuario registrado correctamente"
+                                        // Navega a la pantalla principal solo si registro OK
+                                        navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/A-2")
+                                    } else {
+                                        mensaje = "Error al registrar: ${response.message()}"
+                                    }
                                 }
                             } catch (e: Exception) {
                                 mensaje = "Error de conexión: ${e.localizedMessage}"
                             }
                         }
-                        navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/A-2")
                     }
                 },
                 modifier = Modifier
@@ -281,6 +293,15 @@ fun PantallaRegistro(navController: NavController) {
                 shape = RoundedCornerShape(5.dp)
             ) {
                 Text("REGISTRARSE")
+            }
+            // Mostramos el mensaje debajo del botón
+            if (mensaje.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = mensaje,
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
         }
     }

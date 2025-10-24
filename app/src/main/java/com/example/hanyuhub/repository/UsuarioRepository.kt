@@ -31,4 +31,14 @@ class UsuarioRepository {
             }
         }
     }
+
+    suspend fun validarEmail(email: String): Boolean {
+        val response = api.validarEmail(email)
+        if (response.isSuccessful) {
+            val body = response.body() // body es Map<String, Boolean>?
+            return body?.get("existe") ?: false
+        } else {
+            throw Exception("Error al validar email: ${response.message()}")
+        }
+    }
 }
