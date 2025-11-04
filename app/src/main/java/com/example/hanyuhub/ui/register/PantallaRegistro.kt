@@ -1,8 +1,11 @@
 package com.example.hanyuhub.ui.register
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,6 +27,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,6 +37,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -76,8 +82,8 @@ fun PantallaRegistro(navController: NavController) {
     Scaffold(
         bottomBar = {
             BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = Color(0xFFF58078),
+                contentColor = Color(0xFF721313)
             ) {
                 IconButton(onClick = { navController.navigate("start") }) {
                     Icon(
@@ -93,6 +99,7 @@ fun PantallaRegistro(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color(0xFFF5E9E8))
                 .padding(16.dp)
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
@@ -102,7 +109,8 @@ fun PantallaRegistro(navController: NavController) {
                     indication = null,
                     interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }
                 ) {
-                    focusManager.clearFocus() // Oculta el teclado
+                    // Oculta el teclado
+                    focusManager.clearFocus()
                 }
         ) {
             // Título inicial
@@ -112,12 +120,21 @@ fun PantallaRegistro(navController: NavController) {
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            // Imagen de logo
-            Image(
-                painter = painterResource(R.drawable.ic_login),
-                contentDescription = "Logo de login",
-                modifier = Modifier.size(100.dp)
-            )
+            // Imagen de registro
+            Box(
+                modifier = Modifier
+                    .size(170.dp)
+                    .background(Color(0xFFF5E9E8))
+                    .padding(20.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_login),
+                    contentDescription = "Logo Registro",
+                    modifier = Modifier.fillMaxSize(),
+                    colorFilter = ColorFilter.tint(Color(0xFF4F0606))
+                )
+            }
 
             // Campo para el nombre
             OutlinedTextField(
@@ -224,7 +241,8 @@ fun PantallaRegistro(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
-                        checked = !checked // Al hacer clic en cualquier parte del Row, se alterna el valor
+                        // Al hacer clic en cualquier parte del Row, se alterna el valor
+                        checked = !checked
                     }
             ) {
                 Checkbox(
@@ -288,8 +306,13 @@ fun PantallaRegistro(navController: NavController) {
                     }
                 },
                 modifier = Modifier
-                    .height(55.dp)
+                    .height(65.dp)
                     .fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFF58078),
+                    contentColor = Color(0xFF4F0606)
+                ),
+                border = BorderStroke(2.dp, Color(0xFFFFD0CC)),
                 shape = RoundedCornerShape(5.dp)
             ) {
                 Text("REGISTRARSE")

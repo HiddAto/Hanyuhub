@@ -1,6 +1,8 @@
 package com.example.hanyuhub.ui.login
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,6 +25,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -58,8 +62,8 @@ fun PantallaLoginProfesor(navController: NavController) {
     Scaffold(
         bottomBar = {
             BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = Color(0xFFF58078),
+                contentColor = Color(0xFF721313)
             ) {
                 IconButton(onClick = { navController.navigate("login") }) {
                     Icon(
@@ -75,6 +79,7 @@ fun PantallaLoginProfesor(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color(0xFFF5E9E8))
                 .padding(16.dp)
                 .padding(innerPadding)
                 .clickable(
@@ -97,7 +102,7 @@ fun PantallaLoginProfesor(navController: NavController) {
             Image(
                 painter = painterResource(R.drawable.profesor1),
                 contentDescription = "Logo de login",
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier.size(150.dp)
             )
 
 
@@ -174,8 +179,13 @@ fun PantallaLoginProfesor(navController: NavController) {
                     }
                 },
                 modifier = Modifier
-                    .height(55.dp)
+                    .height(65.dp)
                     .fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFF58078),
+                    contentColor = Color(0xFF4F0606)
+                ),
+                border = BorderStroke(2.dp, Color(0xFFFFD0CC)),
                 shape = RoundedCornerShape(5.dp)
             ) {
                 Text("INGRESAR")
