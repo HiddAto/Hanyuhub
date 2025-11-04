@@ -1,5 +1,6 @@
 package com.example.hanyuhub.ui.login
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -31,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -38,6 +40,10 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hanyuhub.R
+import com.example.hanyuhub.repository.UsuarioRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,6 +56,10 @@ fun PantallaLoginAlumno(navController: NavController) {
     }
     var showEmailVacio by remember { mutableStateOf(false) }
     var showPasswordVacio by remember { mutableStateOf(false) }
+
+    //Variables para la base de datos
+    val usuarioRepository = UsuarioRepository()
+    val context = LocalContext.current
 
     // Permite controlar el foco de los elementos
     val focusManager = LocalFocusManager.current
@@ -161,13 +171,25 @@ fun PantallaLoginAlumno(navController: NavController) {
             // Botón de ingreso
             Button(
                 onClick = {
-                    // Se revisan si los valores estan vacios
-                    showEmailVacio = email.isBlank()
-                    showPasswordVacio = pass.isBlank()
+                    // CoroutineScope para llamar al servicio
+                    CoroutineScope(Dispatchers.Main).launch {
+                        // Llamada al servicio y guarda la respuesta en usuario
+                        val usuario = usuarioRepository.login(email, pass)
+                        // Se revisan si los valores estan vacios
+                        showEmailVacio = email.isBlank()
+                        showPasswordVacio = pass.isBlank()
 
-                    // Si todo esta correcto se ingresa
-                    if (!showEmailVacio && !showPasswordVacio && isEmailValido) {
-                        navController.navigate("homeAlumno/NombreTest/ApellidoTest/$email/$pass/A-2")
+                        // Comprobación de los campos
+                        if (!showEmailVacio && !showPasswordVacio && isEmailValido) {
+
+                            //Si el usuario y contraseña son válidos se ingresa a la pantalla del alumno
+                            if (usuario != null) {
+                                navController.navigate("homeAlumno/NombreTest/ApellidoTest/$email/$pass/A-2")
+                            } else {
+                                Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                            }
+
+                        }
                     }
                 },
                 modifier = Modifier
