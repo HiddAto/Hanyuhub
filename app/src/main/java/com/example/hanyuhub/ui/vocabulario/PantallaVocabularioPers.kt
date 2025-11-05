@@ -1,5 +1,6 @@
-package com.example.hanyuhub.ui.apunte
+package com.example.hanyuhub.ui.vocabulario
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -13,7 +14,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -24,15 +24,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
+import com.example.hanyuhub.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaApuntesDummy(
+fun PantallaVocabularioPers(
     navController: NavController
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -42,7 +45,7 @@ fun PantallaApuntesDummy(
                 ),
                 title = {
                     Text(
-                        "Revisión Apunte",
+                        "MIS VOCABULARIOS",
                         style = MaterialTheme.typography.headlineMedium
                     )
                 },
@@ -89,53 +92,41 @@ fun PantallaApuntesDummy(
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    Text(
-                        text = "Título:",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = Color(0xFF721313)
-                    )
-                    Text(
-                        text = "Saludos básicos en chino",
-                        style = MaterialTheme.typography.titleLarge,
-                        color = Color(0xFF4F0606)
-                    )
-
-                    Spacer(Modifier.height(8.dp))
-
-                    Text(
-                        text = "Descripción:",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = Color(0xFF721313)
-                    )
-                    Text(
-                        text = "Aprender palabras y frases como ni hao, buenos días, adiós.",
-                        color = Color(0xFF4F0606)
-                    )
-
-                    Spacer(Modifier.height(8.dp))
-
-                    Text(
-                        text = "Fecha:",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = Color(0xFF721313)
-                    )
-                    Text(
-                        text = "05 Oct 2025",
-                        color = Color(0xFF8A3838)
-                    )
-
-                    Spacer(Modifier.height(8.dp))
-
-                    Text(
-                        text = "Contenido:",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = Color(0xFF721313)
-                    )
-                    Text(
-                        text = "Aliquam aliquet interdum lorem ut consequat. Cras sit amet porttitor.",
-                        color = Color(0xFF4F0606)
+                    Image(
+                        painter = painterResource(id = R.drawable.vocab),
+                        contentDescription = "Vocabulario",
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(15.dp),
+                        contentScale = ContentScale.Fit
                     )
                 }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(
+                modifier = Modifier.height(60.dp),
+                onClick = {  },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFFFC6C1),
+                    contentColor = Color(0xFF721313)
+                )
+            ) {
+                Text("Ver caracteres")
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(
+                modifier = Modifier.height(60.dp),
+                onClick = {  },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFF58078),
+                    contentColor = Color(0xFF721313)
+                )
+            ) {
+                Text("Editar vocabulario")
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.example.hanyuhub.ui.apunte
+package com.example.hanyuhub.ui.tarea
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -24,11 +24,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaApuntesDummy(
+fun PantallaRevisarTarea(
     navController: NavController
 ) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
@@ -42,7 +44,7 @@ fun PantallaApuntesDummy(
                 ),
                 title = {
                     Text(
-                        "Revisión Apunte",
+                        "Revisión Tarea",
                         style = MaterialTheme.typography.headlineMedium
                     )
                 },
@@ -65,9 +67,9 @@ fun PantallaApuntesDummy(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFC7E5FD))
+                .verticalScroll(rememberScrollState())
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState()),
+                .background(Color(0xFFC7E5FD)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
@@ -84,8 +86,8 @@ fun PantallaApuntesDummy(
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(20.dp)
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(20.dp),
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
@@ -95,7 +97,7 @@ fun PantallaApuntesDummy(
                         color = Color(0xFF721313)
                     )
                     Text(
-                        text = "Saludos básicos en chino",
+                        text = "Practicar saludos básicos",
                         style = MaterialTheme.typography.titleLarge,
                         color = Color(0xFF4F0606)
                     )
@@ -108,21 +110,26 @@ fun PantallaApuntesDummy(
                         color = Color(0xFF721313)
                     )
                     Text(
-                        text = "Aprender palabras y frases como ni hao, buenos días, adiós.",
+                        text = "Graba un audio saludando en chino.",
                         color = Color(0xFF4F0606)
                     )
 
                     Spacer(Modifier.height(8.dp))
 
-                    Text(
-                        text = "Fecha:",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = Color(0xFF721313)
-                    )
-                    Text(
-                        text = "05 Oct 2025",
-                        color = Color(0xFF8A3838)
-                    )
+
+                    Row(horizontalArrangement = Arrangement.spacedBy(60.dp)){
+                        Text(
+                            "Publicado: 05 Oct 2025",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color(0xFF8A3838)
+                        )
+
+                        Text(
+                            "Fecha Limite: 08 Oct 2025",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color(0xFF8A3838)
+                        )
+                    }
 
                     Spacer(Modifier.height(8.dp))
 
@@ -132,10 +139,25 @@ fun PantallaApuntesDummy(
                         color = Color(0xFF721313)
                     )
                     Text(
-                        text = "Aliquam aliquet interdum lorem ut consequat. Cras sit amet porttitor.",
+                        text = "Entrega el audio en formato mp3.",
                         color = Color(0xFF4F0606)
                     )
+
+                    Spacer(Modifier.height(8.dp))
                 }
+            }
+
+            Spacer(Modifier.height(20.dp))
+
+            Button(
+                modifier = Modifier.height(60.dp),
+                onClick = { navController.popBackStack() },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFF58078),
+                    contentColor = Color(0xFF721313)
+                )
+            ) {
+                Text("Completar tarea")
             }
         }
     }

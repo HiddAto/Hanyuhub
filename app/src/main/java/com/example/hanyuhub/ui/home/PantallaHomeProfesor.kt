@@ -59,7 +59,7 @@ fun PantallaHomeProfesor(
     email: String,
     pass: String,
     curso: String) {
-    // https://m3.material.io/components
+
     val imagenes = listOf(
         R.drawable.laoshi_1
     )
