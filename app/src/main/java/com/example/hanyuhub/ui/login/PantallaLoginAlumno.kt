@@ -108,7 +108,7 @@ fun PantallaLoginAlumno(navController: NavController) {
                 style = MaterialTheme.typography.headlineLarge,
                 modifier = Modifier.padding(bottom = 16.dp),
                 //Edité el color para que se vea mejor (revisar modo oscuro de la App)
-                color = Color.Black
+                color = Color.DarkGray
             )
 
             Image(
@@ -172,7 +172,7 @@ fun PantallaLoginAlumno(navController: NavController) {
                     checked = checked,
                     onCheckedChange = { checked = it },
                 )
-                Text("Mostrar contraseña")
+                Text(text ="Mostrar contraseña", color = Color.Gray)
             }
 
             Spacer(modifier = Modifier.height(15.dp))
