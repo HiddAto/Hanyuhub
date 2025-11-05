@@ -93,7 +93,7 @@ fun PantallaPerfilProfesor(
             // Tarjeta de nombre
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFF994DA6)
+                    containerColor = Color(0xFFF80C5C)
                 ),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -108,7 +108,7 @@ fun PantallaPerfilProfesor(
             // Tarjeta de correo
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFF994DA6)
+                    containerColor = Color(0xFFF80C5C)
                 ),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -123,7 +123,7 @@ fun PantallaPerfilProfesor(
             // Tarjeta de contraseña
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFF994DA6)
+                    containerColor = Color(0xFFF80C5C)
                 ),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -138,7 +138,7 @@ fun PantallaPerfilProfesor(
             // Tarjeta del curso
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFF994DA6)
+                    containerColor = Color(0xFFF80C5C)
                 ),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()

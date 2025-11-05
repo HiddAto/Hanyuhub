@@ -9,11 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ButtonDefaults
@@ -21,15 +19,13 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,9 +34,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -48,70 +42,40 @@ import androidx.navigation.NavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VistaCursoProfesor(
-    navController: NavController,
-    nombre: String ,
-    apellido: String,
-    email: String,
-    pass: String,
-    curso: String) {
-    // https://m3.material.io/components
-
-    // Le da función para hacer scroll al topbar.
-    // Cuando se hace scroll hacia arriba, la barra se reduce (colapsa), y cuando bajas, se expande de nuevo
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    navController: NavController) {
 
     // Estado del diálogo (visible u oculto)
     var mostrarDialogo by remember { mutableStateOf(false) }
 
     Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         containerColor = Color.White,
         topBar = {
-            LargeTopAppBar(
-                colors = topAppBarColors(
-                    containerColor = Color(0xFFEE1842),
-                    scrolledContainerColor = Color(0xFFEE1842),
-                    titleContentColor = Color(0xFFFFFFFF)
-                ),
+                TopAppBar(
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color(0xFFEE1842),
+                        titleContentColor = Color(0xFFFFFFFF)
+                    ),
                 title = {
                     Text(
-                        "¡你好 $nombre $apellido!",
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
+                        "Curso: Básico - A",
+                        style = MaterialTheme.typography.headlineMedium
                     )
-                },
-                scrollBehavior = scrollBehavior
+                }
             )
         },
-        bottomBar = {
+         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFEE1842),
                 contentColor = Color(0xFFFFFFFF)
             ) {
-                // Botón de volver
-                IconButton(onClick = { navController.navigate("start") }) {
+                IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Volver"
                     )
                 }
-
-                Spacer(modifier = Modifier.weight(1f))
-
-                // Botón de perfil
-                IconButton(
-                    onClick = {
-                        navController.navigate("perfilProfesor/$nombre/$apellido/$email/$pass/$curso")
-                    }
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = "Perfil",
-                        Modifier.size(36.dp)
-                    )
-                }
             }
-        }
+         }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -122,12 +86,7 @@ fun VistaCursoProfesor(
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
             // Título del curso
-            Spacer(modifier = Modifier.height(10.dp))
-            Column(Modifier
-                .align(Alignment.CenterHorizontally)
-            ) {
-                Text("Básico - A", style = MaterialTheme.typography.headlineMedium, color = Color.DarkGray)
-            }
+            Spacer(modifier = Modifier.height(20.dp))
 
             // Botón: Ver miembros del curso
             OutlinedButton(
@@ -147,7 +106,7 @@ fun VistaCursoProfesor(
 
             // Botón: Asignar tarea
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("asignarTarea") },
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth()
@@ -163,7 +122,7 @@ fun VistaCursoProfesor(
 
             // Botón: Revisar tareas
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("revisarTareas") },
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth()
@@ -179,7 +138,7 @@ fun VistaCursoProfesor(
 
             // Botón: Asignar vocabulario
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("asignarVocabulario")  },
                 modifier = Modifier
                     .padding(horizontal = 16.dp, vertical = 8.dp)
                     .fillMaxWidth()

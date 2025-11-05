@@ -144,7 +144,7 @@ fun PantallaHomeProfesor(
 
             // Boton de Mis Apuntes
             OutlinedButton(
-                onClick = { navController.navigate("misCursosProfesor/$nombre/$apellido/$email/$pass/$curso") },
+                onClick = { navController.navigate("misCursosProfesor") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -228,7 +228,7 @@ fun PantallaHomeProfesor(
             }*/
 
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("vocabulariosProfesor") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()

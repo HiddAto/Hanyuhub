@@ -1,3 +1,5 @@
+package com.example.hanyuhub.ui.profesor
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -8,20 +10,15 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.*
-import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -31,19 +28,11 @@ import kotlinx.coroutines.delay
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MisCursosProfesor(
-    navController: NavController,
-    nombre: String,
-    apellido: String,
-    email: String,
-    pass: String,
-    curso: String
+    navController: NavController
 ) {
     val imagenes = listOf(R.drawable.laoshi_1)
 
-    val scrollBehavior =
-        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
-
-    var imagenActual by remember { mutableStateOf(0) }
+    var imagenActual by remember { mutableIntStateOf(0) }
 
     LaunchedEffect(Unit) {
         while (true) {
@@ -53,48 +42,30 @@ fun MisCursosProfesor(
     }
 
     Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         containerColor = Color.White,
         topBar = {
-            LargeTopAppBar(
-                colors = topAppBarColors(
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFEE1842),
-                    scrolledContainerColor = Color(0xFFEE1842),
-                    titleContentColor = Color.White
+                    titleContentColor = Color(0xFFFFFFFF)
                 ),
                 title = {
                     Text(
-                        "¡你好 $nombre $apellido!",
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
+                        "Mis Cursos",
+                        style = MaterialTheme.typography.headlineMedium
                     )
-                },
-                scrollBehavior = scrollBehavior
+                }
             )
         },
         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFEE1842),
-                contentColor = Color.White
+                contentColor = Color(0xFFFFFFFF)
             ) {
-                IconButton(onClick = { navController.navigate("start") }) {
+                IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Volver"
-                    )
-                }
-
-                Spacer(modifier = Modifier.weight(1f))
-
-                IconButton(
-                    onClick = {
-                        navController.navigate("perfilProfesor/$nombre/$apellido/$email/$pass/$curso")
-                    }
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = "Perfil",
-                        modifier = Modifier.size(36.dp)
                     )
                 }
             }
@@ -136,7 +107,7 @@ fun MisCursosProfesor(
                     OutlinedButton(
                         onClick = {
                             //Esto es temporal hasta que conectemos esta parte a la BBDD
-                            navController.navigate("VistaCursoProfesor/$nombre/$apellido/$email/$pass/$curso")
+                            navController.navigate("VistaCursoProfesor")
                         },
                         modifier = Modifier
                             .fillMaxWidth()

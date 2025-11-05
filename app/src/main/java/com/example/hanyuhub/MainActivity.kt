@@ -1,6 +1,6 @@
 package com.example.hanyuhub
 
-import MisCursosProfesor
+import com.example.hanyuhub.ui.profesor.MisCursosProfesor
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,6 +24,10 @@ import com.example.hanyuhub.ui.apunte.PantallaCrearApunte
 import com.example.hanyuhub.ui.apunte.PantallaEditarApunteDummy
 import com.example.hanyuhub.ui.perfil.PantallaPerfilAlumno
 import com.example.hanyuhub.ui.perfil.PantallaPerfilProfesor
+import com.example.hanyuhub.ui.profesor.PantallaAsignarTarea
+import com.example.hanyuhub.ui.profesor.PantallaAsignarVocabulario
+import com.example.hanyuhub.ui.profesor.PantallaRevisarTareas
+import com.example.hanyuhub.ui.profesor.PantallaVocabularios
 import com.example.hanyuhub.ui.profesor.VistaCursoProfesor
 import com.example.hanyuhub.ui.register.PantallaRegistro
 import com.example.hanyuhub.ui.start.PantallaInicio
@@ -142,39 +146,12 @@ fun MyApp(){
         composable("verApunte") { PantallaApuntesDummy(navController) }
         composable("editarApunte") { PantallaEditarApunteDummy(navController) }
         composable("crearApunte") { PantallaCrearApunte(navController) }
-        composable(
-            "misCursosProfesor/{nombre}/{apellido}/{email}/{pass}/{cursos}",
-            arguments = listOf(
-                navArgument("nombre"){ type = NavType.StringType },
-                navArgument("apellido"){ type = NavType.StringType },
-                navArgument("email"){ type = NavType.StringType },
-                navArgument("pass"){ type = NavType.StringType },
-                navArgument("cursos"){ type = NavType.StringType }
-            )
-        ) { backStackEntry ->
-            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
-            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
-            val email = backStackEntry.arguments?.getString("email").orEmpty()
-            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
-            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
-            MisCursosProfesor(navController, nombre, apellido, email, pass, cursos)
-        }
-        composable(
-            "vistaCursoProfesor/{nombre}/{apellido}/{email}/{pass}/{cursos}",
-            arguments = listOf(
-                navArgument("nombre"){ type = NavType.StringType },
-                navArgument("apellido"){ type = NavType.StringType },
-                navArgument("email"){ type = NavType.StringType },
-                navArgument("pass"){ type = NavType.StringType },
-                navArgument("cursos"){ type = NavType.StringType }
-            )
-        ) { backStackEntry ->
-            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
-            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
-            val email = backStackEntry.arguments?.getString("email").orEmpty()
-            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
-            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
-            VistaCursoProfesor(navController, nombre, apellido, email, pass, cursos)
-        }
+
+        composable("misCursosProfesor") { MisCursosProfesor(navController) }
+        composable("vistaCursoProfesor") { VistaCursoProfesor(navController) }
+        composable("asignarTarea") { PantallaAsignarTarea(navController) }
+        composable("revisarTareas") { PantallaRevisarTareas(navController) }
+        composable("asignarVocabulario") { PantallaAsignarVocabulario(navController) }
+        composable("vocabulariosProfesor") { PantallaVocabularios(navController) }
     }
 }
