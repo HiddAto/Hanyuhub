@@ -18,6 +18,10 @@ import com.example.hanyuhub.ui.theme.HanyuHubTheme
 import com.example.hanyuhub.ui.login.PantallaLogin
 import com.example.hanyuhub.ui.login.PantallaLoginAlumno
 import com.example.hanyuhub.ui.login.PantallaLoginProfesor
+import com.example.hanyuhub.ui.apunte.PantallaApuntes
+import com.example.hanyuhub.ui.apunte.PantallaApuntesDummy
+import com.example.hanyuhub.ui.apunte.PantallaCrearApunte
+import com.example.hanyuhub.ui.apunte.PantallaEditarApunteDummy
 import com.example.hanyuhub.ui.perfil.PantallaPerfilAlumno
 import com.example.hanyuhub.ui.perfil.PantallaPerfilProfesor
 import com.example.hanyuhub.ui.profesor.VistaCursoProfesor
@@ -116,6 +120,28 @@ fun MyApp(){
             val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
             PantallaPerfilProfesor(navController, nombre, apellido, email, pass, cursos)
         }
+
+        composable(
+            "apuntes/{nombre}/{apellido}/{email}/{pass}/{cursos}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("cursos"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
+            PantallaApuntes(navController, nombre, apellido, email, pass, cursos)
+        }
+
+        composable("verApunte") { PantallaApuntesDummy(navController) }
+        composable("editarApunte") { PantallaEditarApunteDummy(navController) }
+        composable("crearApunte") { PantallaCrearApunte(navController) }
         composable(
             "misCursosProfesor/{nombre}/{apellido}/{email}/{pass}/{cursos}",
             arguments = listOf(
