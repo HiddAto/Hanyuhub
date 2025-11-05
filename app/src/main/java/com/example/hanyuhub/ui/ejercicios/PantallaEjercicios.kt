@@ -1,10 +1,10 @@
-package com.example.hanyuhub.ui.home
+package com.example.hanyuhub.ui.ejercicios
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,83 +17,50 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.Assignment
-import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.CollectionsBookmark
 import androidx.compose.material.icons.filled.Games
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
-import com.example.hanyuhub.R
-import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaHomeAlumno(
+fun PantallaEjercicios(
     navController: NavController,
     nombre: String ,
     apellido: String,
     email: String,
     pass: String,
     curso: String) {
-    val imagenes = listOf(
-        R.drawable.imagen_portada_1,
-        R.drawable.imagen_portada_2,
-        R.drawable.imagen_portada_3
-    )
+
     // Le da función para hacer scroll al topbar.
     // Cuando se hace scroll hacia arriba, la barra se reduce (colapsa), y cuando bajas, se expande de nuevo
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
-    var imagenActual by remember { mutableStateOf(0) }
-
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(3000) // 3 segundos
-            imagenActual = if (imagenActual + 1 < imagenes.size) imagenActual + 1 else 0
-        }
-    }
-
     Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            LargeTopAppBar(
-                colors = topAppBarColors(
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFF58078),
-                    scrolledContainerColor = Color(0xFFF58078),
                     titleContentColor = Color(0xFF721313)
                 ),
                 title = {
-                    Text(
-                        "¡Bienvenid@ $nombre $apellido!",
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                    Text("EJERCICIOS", style = MaterialTheme.typography.headlineMedium)
                 },
-                scrollBehavior = scrollBehavior
             )
         },
         bottomBar = {
@@ -102,7 +69,7 @@ fun PantallaHomeAlumno(
                 contentColor = Color(0xFF721313)
             ) {
                 // Botón de volver
-                IconButton(onClick = { navController.navigate("start") }) {
+                IconButton(onClick = { navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso") }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Volver"
@@ -128,26 +95,18 @@ fun PantallaHomeAlumno(
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .background(Color(0xFFC7E5FD))
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            Image(
-                painter = painterResource(id = imagenes[imagenActual]),
-                contentDescription = "Imagen rotatoria",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp)
-                    .height(300.dp)
-            )
 
-            // Boton de Mis Apuntes
+            Spacer(modifier = Modifier.height(30.dp))
+
+            // Boton de ejercicios
             OutlinedButton(
-                onClick = {
-                    navController.navigate("apuntes/$nombre/$apellido/$email/$pass/$curso")
-                },
+                onClick = {  },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -159,11 +118,11 @@ fun PantallaHomeAlumno(
                     contentColor = Color(0xFF003366),
                 )
             ) {
-                Icon(Icons.Default.CollectionsBookmark,
-                    contentDescription = "Apuntes",
+                Icon(Icons.Default.Games,
+                    contentDescription = "Ejercicios App",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
-                Text("Mis apuntes",
+                Text("Ejercicios App",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
                         color = Color(0xFF003366),
@@ -172,8 +131,10 @@ fun PantallaHomeAlumno(
                 )
             }
 
+            Spacer(modifier = Modifier.height(15.dp))
+
             OutlinedButton(
-                onClick = { navController.navigate("tareas/$nombre/$apellido/$email/$pass/$curso") },
+                onClick = {  },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -181,72 +142,18 @@ fun PantallaHomeAlumno(
                 shape = RoundedCornerShape(20.dp),
 
                 colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFFA5C286),
-                    contentColor = Color(0xFF39540F),
-                )
-            ) {
-                Icon(
-                    Icons.AutoMirrored.Filled.Assignment,
-                    contentDescription = "Tareas",
-                    modifier = Modifier.size(40.dp))
-                Spacer(modifier = Modifier.width(10.dp))
-                Text("Mis tareas",
-                    modifier = Modifier.padding(start = 8.dp),
-                    style = TextStyle(
-                        color = Color(0xFF39540F),
-                        fontSize = 22.sp
-                    )
-                )
-            }
-
-            OutlinedButton(
-                onClick = { navController.navigate("ejercicios/$nombre/$apellido/$email/$pass/$curso") },
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxWidth()
-                    .height(100.dp),
-                shape = RoundedCornerShape(20.dp),
-
-                colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFF8C73B4),
-                    contentColor = Color(0xFF200C44),
+                    containerColor = Color(0xFF4C99EF),
+                    contentColor = Color(0xFF003366),
                 )
             ) {
                 Icon(Icons.Default.Games,
-                    contentDescription = "Ejercicios",
+                    contentDescription = "Ejercicios Personalizados",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
-                Text("Ejercicios",
+                Text("Ejercicios Personalizados",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
-                        color = Color(0xFF200C44),
-                        fontSize = 22.sp
-                    )
-                )
-            }
-
-            OutlinedButton(
-                onClick = { navController.navigate("vocabularios/$nombre/$apellido/$email/$pass/$curso") },
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxWidth()
-                    .height(100.dp),
-                shape = RoundedCornerShape(20.dp),
-
-                colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFFF38B84),
-                    contentColor = Color(0xFF721313),
-                )
-            ) {
-                Icon(
-                    Icons.AutoMirrored.Filled.MenuBook,
-                    contentDescription = "Vocabulario",
-                    modifier = Modifier.size(40.dp))
-                Spacer(modifier = Modifier.width(10.dp))
-                Text("Vocabulario",
-                    modifier = Modifier.padding(start = 8.dp),
-                    style = TextStyle(
-                        color = Color(0xFF721313),
+                        color = Color(0xFF003366),
                         fontSize = 22.sp
                     )
                 )

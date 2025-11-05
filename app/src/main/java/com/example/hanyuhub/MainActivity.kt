@@ -21,12 +21,17 @@ import com.example.hanyuhub.ui.apunte.PantallaApuntes
 import com.example.hanyuhub.ui.apunte.PantallaApuntesDummy
 import com.example.hanyuhub.ui.apunte.PantallaCrearApunte
 import com.example.hanyuhub.ui.apunte.PantallaEditarApunteDummy
+import com.example.hanyuhub.ui.ejercicios.PantallaEjercicios
 import com.example.hanyuhub.ui.perfil.PantallaPerfilAlumno
 import com.example.hanyuhub.ui.perfil.PantallaPerfilProfesor
 import com.example.hanyuhub.ui.register.PantallaRegistro
 import com.example.hanyuhub.ui.start.PantallaInicio
 import com.example.hanyuhub.ui.tarea.PantallaRevisarTarea
 import com.example.hanyuhub.ui.tarea.PantallaTareas
+import com.example.hanyuhub.ui.vocabulario.PantallaCrearVocabulario
+import com.example.hanyuhub.ui.vocabulario.PantallaVocabulario
+import com.example.hanyuhub.ui.vocabulario.PantallaVocabularioApp
+import com.example.hanyuhub.ui.vocabulario.PantallaVocabularioPers
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -162,5 +167,45 @@ fun MyApp(){
         }
 
         composable("verTarea") { PantallaRevisarTarea(navController) }
+
+        composable(
+            "ejercicios/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaEjercicios(navController, nombre, apellido, email, pass, curso)
+        }
+
+        composable(
+            "vocabularios/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaVocabulario(navController, nombre, apellido, email, pass, curso)
+        }
+
+        composable("vocabularioApp") { PantallaVocabularioApp(navController) }
+        composable("vocabularioPers") { PantallaVocabularioPers(navController) }
+        composable("crearVocabulario") { PantallaCrearVocabulario(navController) }
     }
 }

@@ -40,7 +40,7 @@ fun PantallaHomeProfesor(
     email: String,
     pass: String,
     cursos: String) {
-    // https://m3.material.io/components
+
     var presses by remember { mutableIntStateOf(0) }
     // Le da función para hacer scroll al topbar
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
