@@ -39,6 +39,7 @@ import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.CollectionsBookmark
 import androidx.compose.material.icons.filled.Games
+import androidx.compose.material.icons.filled.PeopleAlt
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.runtime.LaunchedEffect
@@ -244,6 +245,33 @@ fun PantallaHomeAlumno(
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Vocabulario",
+                    modifier = Modifier.padding(start = 8.dp),
+                    style = TextStyle(
+                        color = Color(0xFF721313),
+                        fontSize = 22.sp
+                    )
+                )
+            }
+
+            OutlinedButton(
+                onClick = { navController.navigate("foro/$nombre/$apellido/$email/$pass/$curso") },
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+                    .height(100.dp),
+                shape = RoundedCornerShape(20.dp),
+
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color(0xFFFF5F94),
+                    contentColor = Color(0xFFE80B56),
+                )
+            ) {
+                Icon(
+                    Icons.Default.PeopleAlt,
+                    contentDescription = "Foro",
+                    modifier = Modifier.size(40.dp))
+                Spacer(modifier = Modifier.width(10.dp))
+                Text("Foro",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
                         color = Color(0xFF721313),
