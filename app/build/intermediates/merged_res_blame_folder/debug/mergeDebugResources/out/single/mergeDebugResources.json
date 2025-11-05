@@ -36,10 +36,6 @@
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.hanyuhub.app-debug-50:/drawable_alumno1.jpg.flat",
-        "source": "com.example.hanyuhub.app-main-52:/drawable/alumno1.jpg"
-    },
-    {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\mipmap-anydpi-v26_ic_launcher_hanyuhub.xml.flat",
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\mipmap-anydpi-v26\\ic_launcher_hanyuhub.xml"
     },
@@ -64,8 +60,20 @@
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\xml\\data_extraction_rules.xml"
     },
     {
+        "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\drawable_laoshi_1.png.flat",
+        "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\drawable\\laoshi_1.png"
+    },
+    {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\drawable_ic_login.png.flat",
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\drawable\\ic_login.png"
+    },
+    {
+        "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\drawable_imagen_portada_1.jpg.flat",
+        "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\drawable\\imagen_portada_1.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\drawable_imagen_portada_3.jpg.flat",
+        "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\drawable\\imagen_portada_3.jpg"
     },
     {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\mipmap-mdpi_ic_launcher_hanyuhub.webp.flat",
@@ -80,20 +88,12 @@
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.hanyuhub.app-debug-50:/drawable_profesor1.jpg.flat",
-        "source": "com.example.hanyuhub.app-main-52:/drawable/profesor1.jpg"
-    },
-    {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\drawable\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "com.example.hanyuhub.app-debug-50:/drawable_imagen_portada_2.jpg.flat",
-        "source": "com.example.hanyuhub.app-main-52:/drawable/imagen_portada_2.jpg"
     },
     {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\drawable_logo_app.png.flat",
@@ -140,12 +140,12 @@
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\drawable\\profesor1.jpg"
     },
     {
-        "merged": "com.example.hanyuhub.app-debug-50:/drawable_imagen_portada_1.jpg.flat",
-        "source": "com.example.hanyuhub.app-main-52:/drawable/imagen_portada_1.jpg"
-    },
-    {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.hanyuhub.app-debug-50:/drawable_laoshi_1.png.flat",
+        "source": "com.example.hanyuhub.app-main-52:/drawable/laoshi_1.png"
     },
     {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\mipmap-mdpi_ic_launcher_hanyuhub_round.webp.flat",
@@ -154,10 +154,6 @@
     {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\mipmap-xxxhdpi_ic_launcher_hanyuhub.webp.flat",
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\mipmap-xxxhdpi\\ic_launcher_hanyuhub.webp"
-    },
-    {
-        "merged": "com.example.hanyuhub.app-debug-50:/drawable_imagen_portada_3.jpg.flat",
-        "source": "com.example.hanyuhub.app-main-52:/drawable/imagen_portada_3.jpg"
     },
     {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\mipmap-anydpi-v26_ic_launcher_hanyuhub_round.xml.flat",
@@ -170,5 +166,9 @@
     {
         "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\mipmap-xxhdpi_ic_launcher_hanyuhub_foreground.webp.flat",
         "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\mipmap-xxhdpi\\ic_launcher_hanyuhub_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-debug-50:\\drawable_imagen_portada_2.jpg.flat",
+        "source": "C:\\Users\\Ivaneke\\.gradle\\daemon\\8.10.2\\com.example.hanyuhub.app-main-52:\\drawable\\imagen_portada_2.jpg"
     }
 ]

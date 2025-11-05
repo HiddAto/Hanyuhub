@@ -5,7 +5,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -15,10 +14,6 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.graphics.Color.Companion.Blue
-import androidx.compose.ui.graphics.Color.Companion.Green
-import androidx.compose.ui.graphics.Color.Companion.Red
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -27,7 +22,7 @@ private val LightColors = lightColorScheme(
     primary = Color(0xFF721313),
     onPrimary = Color.White,
     secondary = Color(0xFF34C759),
-    onSecondary = Color.Black,
+    onSecondary = Black,
     background = Color(0xFFFFFFFF),
     onBackground = Color(0xFF0B0B0B),
     surface = Color.White,
@@ -36,19 +31,22 @@ private val LightColors = lightColorScheme(
 
 private val DarkColors = darkColorScheme(
     primary = Color(0xFF6CB6FF),
-    onPrimary = Color.Black,
+    onPrimary = Black,
     secondary = Color(0xFF30D158),
-    onSecondary = Color.Black
+    onSecondary = Black
 )
 
 data class AppColors(val brand: Color, val onBrand: Color)
 private val LightApp = AppColors(brand = Color(0xFF0A84FF), onBrand = Color.White)
-private val DarkApp  = AppColors(brand = Color(0xFF6CB6FF), onBrand = Color.Black)
+private val DarkApp  = AppColors(brand = Color(0xFF6CB6FF), onBrand = Black)
 private val LocalAppColors = staticCompositionLocalOf { LightApp }
 
+/* No se usó
 object AppTheme {
     val colors: AppColors @Composable get() = LocalAppColors.current
 }
+*/
+
 
 @Composable
 fun HanyuHubTheme(

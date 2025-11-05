@@ -15,6 +15,7 @@ drawable ic_login
 drawable imagen_portada_1
 drawable imagen_portada_2
 drawable imagen_portada_3
+drawable laoshi_1
 drawable logo_app
 drawable profesor1
 mipmap ic_launcher

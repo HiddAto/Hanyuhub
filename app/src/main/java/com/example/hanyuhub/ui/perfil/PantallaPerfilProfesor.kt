@@ -1,5 +1,7 @@
 package com.example.hanyuhub.ui.perfil
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -21,6 +24,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
@@ -32,31 +36,38 @@ fun PantallaPerfilProfesor(
     apellido: String,
     email: String,
     pass: String,
-    cursos: String
+    curso: String
 ) {
     Scaffold(
+        containerColor = Color.White,
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    containerColor = Color(0xFFEE1842),
+                    titleContentColor = Color(0xFFFFFFFF)
                 ),
                 title = {
-                    Text("TU PERFIL", style = MaterialTheme.typography.headlineMedium)
+                    Text("MI PERFIL", style = MaterialTheme.typography.headlineMedium)
                 },
             )
         },
         bottomBar = {
             BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = Color(0xFFEE1842),
+                contentColor = Color(0xFFFFFFFF)
             ) {
                 Button(
-                    onClick = { navController.navigate("homeProfesor/$nombre/$apellido/$email/$pass/$cursos") },
+                    onClick = { navController.navigate("homeProfesor/$nombre/$apellido/$email/$pass/$curso") },
                     modifier = Modifier
-                        .height(55.dp)
+                        .height(65.dp)
+                        .padding(12.dp)
                         .fillMaxWidth(),
-                    shape = RoundedCornerShape(5.dp)
+                    shape = RoundedCornerShape(5.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFF5E9E8),
+                        contentColor = Color(0xFF312E2E)
+                    ),
+                    border = BorderStroke(2.dp, Color(0xFFFFD0CC))
                 ) {
                     Text("HOME")
                 }
@@ -67,6 +78,7 @@ fun PantallaPerfilProfesor(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
+                .background(Color.White)
                 .fillMaxSize(),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.spacedBy(20.dp)
@@ -75,62 +87,66 @@ fun PantallaPerfilProfesor(
             Column(Modifier
                 .align(Alignment.CenterHorizontally)
             ) {
-                Text("Tus datos", style = MaterialTheme.typography.headlineMedium)
+                Text("Mis datos", style = MaterialTheme.typography.headlineMedium, color = Color.DarkGray)
             }
 
             // Tarjeta de nombre
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    containerColor = Color(0xFF994DA6)
                 ),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()
+                    .padding(16.dp)
             ) {
                 Column(Modifier.padding(20.dp)) {
-                    Text("Nombre completo", style = MaterialTheme.typography.titleMedium)
-                    Text("$nombre $apellido", style = MaterialTheme.typography.headlineSmall)
+                    Text("Nombre completo", style = MaterialTheme.typography.titleMedium, color = Color.DarkGray)
+                    Text("$nombre $apellido", style = MaterialTheme.typography.headlineSmall, color = Color.White) //  color del texto)
                 }
             }
 
             // Tarjeta de correo
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    containerColor = Color(0xFF994DA6)
                 ),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()
+                    .padding(16.dp)
             ) {
                 Column(Modifier.padding(20.dp)) {
-                    Text("Correo electrónico", style = MaterialTheme.typography.titleMedium)
-                    Text(email, style = MaterialTheme.typography.headlineSmall)
+                    Text("Correo electrónico", style = MaterialTheme.typography.titleMedium, color = Color.DarkGray)
+                    Text(email, style = MaterialTheme.typography.headlineSmall, color = Color.White)
                 }
             }
 
             // Tarjeta de contraseña
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    containerColor = Color(0xFF994DA6)
                 ),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()
+                    .padding(16.dp)
             ) {
                 Column(Modifier.padding(20.dp)) {
-                    Text("Contraseña", style = MaterialTheme.typography.titleMedium)
-                    Text(pass, style = MaterialTheme.typography.headlineSmall)
+                    Text("Contraseña", style = MaterialTheme.typography.titleMedium, color = Color.DarkGray)
+                    Text(pass, style = MaterialTheme.typography.headlineSmall, color = Color.White)
                 }
             }
 
             // Tarjeta del curso
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    containerColor = Color(0xFF994DA6)
                 ),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()
+                    .padding(16.dp)
             ) {
                 Column(Modifier.padding(20.dp)) {
-                    Text("Cursos asignados", style = MaterialTheme.typography.titleMedium)
-                    Text(cursos, style = MaterialTheme.typography.headlineSmall)
+                    Text("Curso asignado", style = MaterialTheme.typography.titleMedium, color = Color.DarkGray)
+                    Text(curso, style = MaterialTheme.typography.headlineSmall, color = Color.White)
                 }
             }
         }

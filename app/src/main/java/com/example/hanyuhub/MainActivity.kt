@@ -1,5 +1,6 @@
 package com.example.hanyuhub
 
+import MisCursosProfesor
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,6 +20,7 @@ import com.example.hanyuhub.ui.login.PantallaLoginAlumno
 import com.example.hanyuhub.ui.login.PantallaLoginProfesor
 import com.example.hanyuhub.ui.perfil.PantallaPerfilAlumno
 import com.example.hanyuhub.ui.perfil.PantallaPerfilProfesor
+import com.example.hanyuhub.ui.profesor.VistaCursoProfesor
 import com.example.hanyuhub.ui.register.PantallaRegistro
 import com.example.hanyuhub.ui.start.PantallaInicio
 
@@ -113,6 +115,40 @@ fun MyApp(){
             val pass = backStackEntry.arguments?.getString("pass").orEmpty()
             val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
             PantallaPerfilProfesor(navController, nombre, apellido, email, pass, cursos)
+        }
+        composable(
+            "misCursosProfesor/{nombre}/{apellido}/{email}/{pass}/{cursos}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("cursos"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
+            MisCursosProfesor(navController, nombre, apellido, email, pass, cursos)
+        }
+        composable(
+            "vistaCursoProfesor/{nombre}/{apellido}/{email}/{pass}/{cursos}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("cursos"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
+            VistaCursoProfesor(navController, nombre, apellido, email, pass, cursos)
         }
     }
 }
