@@ -145,7 +145,9 @@ fun PantallaHomeAlumno(
 
             // Boton de Mis Apuntes
             OutlinedButton(
-                onClick = {  },
+                onClick = {
+                    navController.navigate("apuntes/$nombre/$apellido/$email/$pass/$curso")
+                },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -158,7 +160,7 @@ fun PantallaHomeAlumno(
                 )
             ) {
                 Icon(Icons.Default.CollectionsBookmark,
-                    contentDescription = "Add",
+                    contentDescription = "Apuntes",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Mis apuntes",
@@ -185,7 +187,7 @@ fun PantallaHomeAlumno(
             ) {
                 Icon(
                     Icons.AutoMirrored.Filled.Assignment,
-                    contentDescription = "Add",
+                    contentDescription = "Tareas",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Mis tareas",
@@ -211,7 +213,7 @@ fun PantallaHomeAlumno(
                 )
             ) {
                 Icon(Icons.Default.Games,
-                    contentDescription = "Add",
+                    contentDescription = "Ejercicios",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Ejercicios",
@@ -238,7 +240,7 @@ fun PantallaHomeAlumno(
             ) {
                 Icon(
                     Icons.AutoMirrored.Filled.MenuBook,
-                    contentDescription = "Add",
+                    contentDescription = "Vocabulario",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Vocabulario",
