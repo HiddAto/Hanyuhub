@@ -173,7 +173,7 @@ fun PantallaHomeAlumno(
             }
 
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("tareas/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()

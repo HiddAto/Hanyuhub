@@ -25,6 +25,8 @@ import com.example.hanyuhub.ui.perfil.PantallaPerfilAlumno
 import com.example.hanyuhub.ui.perfil.PantallaPerfilProfesor
 import com.example.hanyuhub.ui.register.PantallaRegistro
 import com.example.hanyuhub.ui.start.PantallaInicio
+import com.example.hanyuhub.ui.tarea.PantallaRevisarTarea
+import com.example.hanyuhub.ui.tarea.PantallaTareas
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,25 +122,45 @@ fun MyApp(){
         }
 
         composable(
-            "apuntes/{nombre}/{apellido}/{email}/{pass}/{cursos}",
+            "apuntes/{nombre}/{apellido}/{email}/{pass}/{curso}",
             arguments = listOf(
                 navArgument("nombre"){ type = NavType.StringType },
                 navArgument("apellido"){ type = NavType.StringType },
                 navArgument("email"){ type = NavType.StringType },
                 navArgument("pass"){ type = NavType.StringType },
-                navArgument("cursos"){ type = NavType.StringType }
+                navArgument("curso"){ type = NavType.StringType }
             )
         ) { backStackEntry ->
             val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
             val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
             val email = backStackEntry.arguments?.getString("email").orEmpty()
             val pass = backStackEntry.arguments?.getString("pass").orEmpty()
-            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
-            PantallaApuntes(navController, nombre, apellido, email, pass, cursos)
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaApuntes(navController, nombre, apellido, email, pass, curso)
         }
 
         composable("verApunte") { PantallaApuntesDummy(navController) }
         composable("editarApunte") { PantallaEditarApunteDummy(navController) }
         composable("crearApunte") { PantallaCrearApunte(navController) }
+
+        composable(
+            "tareas/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaTareas(navController, nombre, apellido, email, pass, curso)
+        }
+
+        composable("verTarea") { PantallaRevisarTarea(navController) }
     }
 }

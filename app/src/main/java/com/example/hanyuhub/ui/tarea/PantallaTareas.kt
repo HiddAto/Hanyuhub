@@ -1,5 +1,4 @@
-package com.example.hanyuhub.ui.apunte
-
+package com.example.hanyuhub.ui.tarea
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -29,21 +28,22 @@ import androidx.navigation.NavController
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
-import com.example.hanyuhub.model.Apuntes
+import com.example.hanyuhub.model.Tareas
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaApuntes(
+fun PantallaTareas(
     navController: NavController,
     nombre: String,
     apellido: String,
@@ -54,38 +54,22 @@ fun PantallaApuntes(
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     // Data Dummy
-    val apuntes = listOf(
-        Apuntes(
-            "Saludos básicos en chino",
-            "Aprender palabras y frases como ni hao, buenos días, adiós.",
+    val tareas = remember { mutableStateListOf(
+        Tareas(
+            "Practicar saludos básicos",
+            "Graba un audio saludando en chino.",
             "05 Oct 2025",
-            "Aliquam aliquet interdum lorem ut consequat. Cras sit amet porttitor."
-        ),
-        Apuntes(
-            "Pinyin y pronunciación",
-            "Explicación de los tonos, pronunciación correcta y uso del pinyin para leer caracteres.",
             "08 Oct 2025",
-            "Aliquam aliquet interdum lorem ut consequat. Cras sit amet porttitor."
+            "Entrega el audio en formato mp3."
         ),
-        Apuntes(
-            "Números en chino",
-            "Estudio de los números del 1 al 100 en chino y sus usos.",
-            "10 Oct 2025",
-            "Aliquam aliquet interdum lorem ut consequat. Cras sit amet porttitor."
-        ),
-        Apuntes(
-            "Radicales más comunes",
-            "Lista de los radicales más usados en caracteres chinos y su significado.",
-            "12 Oct 2025",
-            "Aliquam aliquet interdum lorem ut consequat. Cras sit amet porttitor."
-        ),
-        Apuntes(
-            "Construcción de frases",
-            "Estructura básica de sujeto + verbo + objeto en chino.",
-            "14 Oct 2025",
-            "Aliquam aliquet interdum lorem ut consequat. Cras sit amet porttitor."
+        Tareas(
+            "Ejercicio de pinyin y tonos",
+            "Completa la hoja de ejercicios sobre los tonos.",
+            "08 Oct 2025",
+            "11 Oct 2025",
+            "Sube una foto de tu hoja completada."
         )
-    )
+    )}
 
     Scaffold(
         topBar = {
@@ -95,7 +79,7 @@ fun PantallaApuntes(
                     titleContentColor = Color(0xFF721313)
                 ),
                 title = {
-                    Text("MIS APUNTES", style = MaterialTheme.typography.headlineMedium)
+                    Text("MIS TAREAS", style = MaterialTheme.typography.headlineMedium)
                 },
             )
         },
@@ -129,18 +113,6 @@ fun PantallaApuntes(
                     )
                 }
             }
-        },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = { navController.navigate("crearApunte") },
-                containerColor = Color(0xFFFFC6C1),
-                contentColor = Color(0xFF4F0606)
-            ) {
-                Row (modifier = Modifier.padding(5.dp)) {
-                    Icon(Icons.Default.Add, contentDescription = "Add")
-                    Text("Crear Apunte")
-                }
-            }
         }
     ) { innerPadding ->
         Column(
@@ -152,10 +124,10 @@ fun PantallaApuntes(
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.spacedBy(20.dp),
 
-        ) {
+            ) {
             Spacer(modifier = Modifier.height(10.dp))
 
-            apuntes.forEach { apunte ->
+            tareas.forEach { tarea ->
                 Card(
                     colors = CardDefaults.cardColors(
                         containerColor = Color(0xFFFFE3DF)
@@ -165,56 +137,66 @@ fun PantallaApuntes(
                 ) {
                     Column(Modifier.padding(20.dp)) {
                         Text(
-                            "Título: ${apunte.titulo}",
-                            style = MaterialTheme.typography.titleMedium,
-                            color = Color(0xFF721313)
-                        )
-
-                        Spacer(Modifier.height(6.dp))
-
-                        Text(
-                            "Descripción: ${apunte.descripcion}",
+                            tarea.titulo,
+                            style = MaterialTheme.typography.titleLarge,
                             color = Color(0xFF4F0606)
                         )
 
-                        Spacer(Modifier.height(6.dp))
+                        Spacer(Modifier.height(4.dp))
 
                         Text(
-                            "Fecha: ${apunte.fecha}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color(0xFF8A3838)
+                            tarea.descripcion,
+                            color = Color(0xFF4F0606)
                         )
+
+                        Spacer(Modifier.height(12.dp))
+
+                        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)){
+                            Text(
+                                "Publicada: ${tarea.fechaPub}",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = Color(0xFF8A3838)
+                            )
+
+                            Text(
+                                "Fecha Limite: ${tarea.fechaLim}",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = Color(0xFF8A3838)
+                            )
+                        }
 
                         Spacer(Modifier.height(12.dp))
 
                         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                             Button(
-                                onClick = { navController.navigate("verApunte") },
+                                onClick = {
+                                    navController.navigate("verTarea")
+                                },
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color(0xFFFFC6C1),
                                     contentColor = Color(0xFF4F0606)
                                 ),
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text("Ver apunte")
+                                Text("Revisar tarea")
                             }
 
                             Button(
-                                onClick = { navController.navigate("editarApunte") },
+                                onClick = {  },
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color(0xFFF58078),
                                     contentColor = Color(0xFF721313)
                                 ),
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text("Editar")
+                                Text("Completar tarea")
                             }
                         }
                     }
                 }
             }
 
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(15.dp))
         }
     }
 }
