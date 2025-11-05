@@ -6,6 +6,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -21,4 +22,9 @@ interface ApiService {
     // Validación de email al momento de registrar un usuario
     @GET("usuario/validar-email")
     suspend fun validarEmail(@Query("mail") email: String): Response<Map<String, Boolean>>
+
+    // Obtener usuario por mail
+    @GET("usuario/{mail}")
+    suspend fun obtenerUsuarioPorMail(@Path("mail") mail: String): Response<UsuarioDto>
+
 }

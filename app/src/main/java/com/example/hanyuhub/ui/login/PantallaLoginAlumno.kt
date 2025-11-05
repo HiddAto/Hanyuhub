@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hanyuhub.R
 import com.example.hanyuhub.repository.UsuarioRepository
+import com.example.hanyuhub.ui.theme.CustomTextField
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -105,7 +106,9 @@ fun PantallaLoginAlumno(navController: NavController) {
             Text(
                 text = "Iniciar Sesión",
                 style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 16.dp),
+                //Edité el color para que se vea mejor (revisar modo oscuro de la App)
+                color = Color.Black
             )
 
             Image(
@@ -117,7 +120,8 @@ fun PantallaLoginAlumno(navController: NavController) {
 
 
             // Campo para el correo
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = email,
                 onValueChange = {
                     email = it
@@ -137,7 +141,7 @@ fun PantallaLoginAlumno(navController: NavController) {
             )
 
             // Campo para la contraseña
-            OutlinedTextField(
+            CustomTextField(
                 value = pass,
                 onValueChange = {
                     pass = it
@@ -180,6 +184,7 @@ fun PantallaLoginAlumno(navController: NavController) {
                     CoroutineScope(Dispatchers.Main).launch {
                         // Llamada al servicio y guarda la respuesta en usuario
                         val usuario = usuarioRepository.login(email, pass)
+
                         // Se revisan si los valores estan vacios
                         showEmailVacio = email.isBlank()
                         showPasswordVacio = pass.isBlank()
@@ -189,7 +194,12 @@ fun PantallaLoginAlumno(navController: NavController) {
 
                             //Si el usuario y contraseña son válidos se ingresa a la pantalla del alumno
                             if (usuario != null) {
-                                navController.navigate("homeAlumno/NombreTest/ApellidoTest/$email/$pass/A-2")
+                                // Verifica el rol antes de permitir el acceso
+                                if (usuario.rol.lowercase() == "estudiante") {
+                                    navController.navigate("homeAlumno/${usuario.nombre}/${usuario.apellido}/${usuario.mail}/${usuario.pass}/A-2")
+                                } else {
+                                    Toast.makeText(context, "Acceso denegado: solo estudiantes pueden ingresar", Toast.LENGTH_SHORT).show()
+                                }
                             } else {
                                 Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                             }

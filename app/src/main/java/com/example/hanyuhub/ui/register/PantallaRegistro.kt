@@ -48,6 +48,7 @@ import androidx.navigation.NavController
 import com.example.hanyuhub.R
 import com.example.hanyuhub.model.UsuarioDto
 import com.example.hanyuhub.repository.UsuarioRepository
+import com.example.hanyuhub.ui.theme.CustomTextField
 import kotlinx.coroutines.launch
 
 @Composable
@@ -117,7 +118,9 @@ fun PantallaRegistro(navController: NavController) {
             Text(
                 text = "Registrarse",
                 style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 16.dp),
+                //Edité el color para que se vea mejor (revisar modo oscuro de la App)
+                color = Color.Black
             )
 
             // Imagen de registro
@@ -137,7 +140,8 @@ fun PantallaRegistro(navController: NavController) {
             }
 
             // Campo para el nombre
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = nombre,
                 onValueChange = {
                     nombre = it
@@ -156,7 +160,8 @@ fun PantallaRegistro(navController: NavController) {
             )
 
             // Campo para el apellido
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = apellido,
                 onValueChange = {
                     apellido = it
@@ -176,7 +181,8 @@ fun PantallaRegistro(navController: NavController) {
 
 
             // Campo para el correo
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = email,
                 onValueChange = {
                     email = it
@@ -196,7 +202,8 @@ fun PantallaRegistro(navController: NavController) {
             )
 
             // Campo para la contraseña
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = pass,
                 onValueChange = {
                     pass = it
@@ -214,7 +221,7 @@ fun PantallaRegistro(navController: NavController) {
             )
 
             // Campo para la contraseña repetida
-            OutlinedTextField(
+            CustomTextField(
                 value = passSec,
                 onValueChange = {
                     passSec = it
