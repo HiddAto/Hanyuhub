@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -33,7 +32,7 @@ fun PantallaInicio(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5E9E8))
+            .background(Color(0xFFFFFFFF))
             .padding(32.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -43,7 +42,7 @@ fun PantallaInicio(navController: NavController) {
             modifier = Modifier
                 .size(150.dp)
                 .clip(CircleShape)
-                .background(Color(0xFFF5E9E8)),
+                .background(Color(0xFFFFFFFF)),
             contentAlignment = Alignment.Center
         ) {
             Image(
@@ -57,7 +56,7 @@ fun PantallaInicio(navController: NavController) {
         }
 
         // Espacio
-        androidx.compose.foundation.layout.Spacer(modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.size(24.dp))
 
         // Botón para ir al Login
         Button(
@@ -67,8 +66,8 @@ fun PantallaInicio(navController: NavController) {
                 .padding(vertical = 8.dp)
                 .height(75.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF4F0606)
+                containerColor = Color(0xFFDE2910),
+                contentColor = Color(0xFFFFFFFF)
             ),
             border = BorderStroke(2.dp, Color(0xFFFFD0CC))
         ) {
@@ -85,8 +84,8 @@ fun PantallaInicio(navController: NavController) {
                 .padding(vertical = 8.dp)
                 .height(75.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF4F0606)
+                containerColor = Color(0xFFDE2910),
+                contentColor = Color(0xFFFFFFFF)
             ),
             border = BorderStroke(2.dp, Color(0xFFFFD0CC))
         ) {
@@ -96,15 +95,15 @@ fun PantallaInicio(navController: NavController) {
         Spacer(modifier = Modifier.height(25.dp))
 
         // BOTON TEST
-        Button(
+        /*Button(
             onClick = { navController.navigate("homeAlumno/NombreTest/ApellidoTest/email/rgaeer43143/A-2") },
             modifier = Modifier
                 .height(55.dp)
                 .fillMaxWidth(),
             shape = RoundedCornerShape(5.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF4F0606)
+                containerColor = Color(0xFFDE2910),
+                contentColor = Color(0xFFFFFFFF)
             ),
             border = BorderStroke(2.dp, Color(0xFFFFD0CC))
         ) {
@@ -121,12 +120,13 @@ fun PantallaInicio(navController: NavController) {
                 .fillMaxWidth(),
             shape = RoundedCornerShape(5.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF4F0606)
+                containerColor = Color(0xFFDE2910),
+                contentColor = Color(0xFFFFFFFF)
             ),
             border = BorderStroke(2.dp, Color(0xFFFFD0CC))
         ) {
             Text("INGRESAR PROFESOR TEST")
         }
+         */
     }
 }

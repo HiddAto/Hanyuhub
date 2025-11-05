@@ -14,10 +14,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.CollectionsBookmark
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,12 +28,14 @@ import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -67,7 +70,7 @@ fun PantallaHomeProfesor(
     // Cuando se hace scroll hacia arriba, la barra se reduce (colapsa), y cuando bajas, se expande de nuevo
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
-    var imagenActual by remember { mutableStateOf(0) }
+    var imagenActual by remember { mutableIntStateOf(0) }
 
     LaunchedEffect(Unit) {
         while (true) {
@@ -101,11 +104,46 @@ fun PantallaHomeProfesor(
                 containerColor = Color(0xFFEE1842),
                 contentColor = Color(0xFFFFFFFF)
             ) {
-                // Botón de volver
-                IconButton(onClick = { navController.navigate("start") }) {
+                // Estado para mostrar el diálogo de confirmación
+                var mostrarDialogoSalir by remember { mutableStateOf(false) }
+
+                // Botón de salir
+                IconButton(onClick = { mostrarDialogoSalir = true }) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Volver"
+                        imageVector = Icons.AutoMirrored.Filled.ExitToApp, // ícono más representativo de "cerrar sesión"
+                        contentDescription = "Cerrar sesión",
+                        tint = Color.White
+                    )
+                }
+
+                // Diálogo de confirmación de cierre de sesión
+                if (mostrarDialogoSalir) {
+                    AlertDialog(
+                        onDismissRequest = { mostrarDialogoSalir = false },
+                        confirmButton = {
+                            TextButton(onClick = {
+                                mostrarDialogoSalir = false
+                                // Navegar a pantalla de inicio o login
+                                navController.navigate("start") {
+                                    popUpTo(0) // Limpia el historial de navegación
+                                }
+                            }) {
+                                Text("Cerrar sesión", color = Color(0xFFEE1842))
+                            }
+                        },
+                        dismissButton = {
+                            TextButton(onClick = { mostrarDialogoSalir = false }) {
+                                Text("Cancelar", color = Color.Gray)
+                            }
+                        },
+                        title = {
+                            Text("¿Deseas cerrar sesión?")
+                        },
+                        text = {
+                            Text("Tu sesión actual se cerrará y volverás a la pantalla de inicio.")
+                        },
+                        containerColor = Color.White,
+                        tonalElevation = 4.dp
                     )
                 }
 

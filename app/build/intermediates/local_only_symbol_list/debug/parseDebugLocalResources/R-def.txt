@@ -18,6 +18,7 @@ drawable imagen_portada_3
 drawable laoshi_1
 drawable logo_app
 drawable profesor1
+drawable vocab
 mipmap ic_launcher
 mipmap ic_launcher_hanyuhub
 mipmap ic_launcher_hanyuhub_foreground

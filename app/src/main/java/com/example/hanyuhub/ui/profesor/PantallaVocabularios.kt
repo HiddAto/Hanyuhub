@@ -47,7 +47,7 @@ fun PantallaVocabularios(
                 ),
                 title = {
                     Text(
-                        "Mis Cursos",
+                        "Mis Vocabularios",
                         style = MaterialTheme.typography.headlineMedium
                     )
                 }
@@ -95,15 +95,8 @@ fun PantallaVocabularios(
                     .fillMaxSize()
                     .padding(horizontal = 20.dp)
             ) {
-                Spacer(modifier = Modifier.height(20.dp))
 
-                Text(
-                    text = "Mis Colecciones de Vocabulario",
-                    style = MaterialTheme.typography.titleLarge,
-                    color = Color(0xFF333333)
-                )
-
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(30.dp))
 
                 // Lista de colecciones
                 LazyColumn(
@@ -185,8 +178,7 @@ fun PantallaVocabularios(
                 // Botón para crear nueva colección
                 Button(
                     onClick = {
-                        // Navegar a pantalla de creación (por implementar)
-                        // navController.navigate("crearColeccion")
+                        navController.navigate("crearVocabularioProfe")
                     },
                     modifier = Modifier
                         .fillMaxWidth()

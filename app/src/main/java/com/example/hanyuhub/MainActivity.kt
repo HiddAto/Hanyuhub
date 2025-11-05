@@ -27,6 +27,7 @@ import com.example.hanyuhub.ui.foro.PantallaCrearPost
 import com.example.hanyuhub.ui.foro.PantallaForo
 import com.example.hanyuhub.ui.perfil.PantallaPerfilAlumno
 import com.example.hanyuhub.ui.perfil.PantallaPerfilProfesor
+import com.example.hanyuhub.ui.profesor.CrearVocabularioProfe
 import com.example.hanyuhub.ui.profesor.PantallaAsignarTarea
 import com.example.hanyuhub.ui.profesor.PantallaAsignarVocabulario
 import com.example.hanyuhub.ui.profesor.PantallaRevisarTareas
@@ -242,5 +243,6 @@ fun MyApp(){
         composable("revisarTareas") { PantallaRevisarTareas(navController) }
         composable("asignarVocabulario") { PantallaAsignarVocabulario(navController) }
         composable("vocabulariosProfesor") { PantallaVocabularios(navController) }
+        composable("crearVocabularioProfe") { CrearVocabularioProfe(navController) }
     }
 }

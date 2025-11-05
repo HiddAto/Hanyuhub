@@ -2,7 +2,6 @@ package com.example.hanyuhub.ui.login
 
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,12 +16,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.BottomAppBar
@@ -38,12 +37,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.hanyuhub.R
 import com.example.hanyuhub.repository.UsuarioRepository
 import com.example.hanyuhub.ui.theme.CustomTextField
 import kotlinx.coroutines.CoroutineScope
@@ -73,8 +70,8 @@ fun PantallaLoginProfesor(navController: NavController) {
     Scaffold(
         bottomBar = {
             BottomAppBar(
-                containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF721313)
+                containerColor = Color(0xFFDE2910),
+                contentColor = Color(0xFFFFFFFF)
             ) {
                 IconButton(onClick = { navController.navigate("login") }) {
                     Icon(
@@ -90,7 +87,7 @@ fun PantallaLoginProfesor(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF5E9E8))
+                .background(Color(0xFFFFFFFF))
                 .padding(16.dp)
                 .padding(innerPadding)
                 .clickable(
@@ -111,10 +108,11 @@ fun PantallaLoginProfesor(navController: NavController) {
                 color = Color.DarkGray
             )
 
-            Image(
-                painter = painterResource(R.drawable.profesor1),
-                contentDescription = "Logo de login",
-                modifier = Modifier.size(150.dp)
+            Icon(
+                imageVector = Icons.Default.AutoStories,
+                contentDescription = "Ícono Profesor",
+                modifier = Modifier.size(150.dp),
+                tint = Color(0xFFFFC107)
             )
 
 
@@ -211,8 +209,8 @@ fun PantallaLoginProfesor(navController: NavController) {
                     .height(65.dp)
                     .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF58078),
-                    contentColor = Color(0xFF4F0606)
+                    containerColor = Color(0xFFDE2910),
+                    contentColor = Color(0xFFFFFFFF)
                 ),
                 border = BorderStroke(2.dp, Color(0xFFFFD0CC)),
                 shape = RoundedCornerShape(5.dp)

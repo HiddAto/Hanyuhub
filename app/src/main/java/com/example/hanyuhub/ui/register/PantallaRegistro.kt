@@ -23,7 +23,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.BottomAppBar
@@ -83,8 +82,8 @@ fun PantallaRegistro(navController: NavController) {
     Scaffold(
         bottomBar = {
             BottomAppBar(
-                containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF721313)
+                containerColor = Color(0xFFDE2910),
+                contentColor = Color(0xFFFFFFFF)
             ) {
                 IconButton(onClick = { navController.navigate("start") }) {
                     Icon(
@@ -100,7 +99,7 @@ fun PantallaRegistro(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF5E9E8))
+                .background(Color(0xFFFFFFFF))
                 .padding(16.dp)
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
@@ -127,7 +126,7 @@ fun PantallaRegistro(navController: NavController) {
             Box(
                 modifier = Modifier
                     .size(170.dp)
-                    .background(Color(0xFFF5E9E8))
+                    .background(Color(0xFFFFFFFF))
                     .padding(20.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -135,7 +134,7 @@ fun PantallaRegistro(navController: NavController) {
                     painter = painterResource(id = R.drawable.ic_login),
                     contentDescription = "Logo Registro",
                     modifier = Modifier.fillMaxSize(),
-                    colorFilter = ColorFilter.tint(Color(0xFF4F0606))
+                    colorFilter = ColorFilter.tint(Color(0xFFFFC107))
                 )
             }
 
@@ -316,8 +315,8 @@ fun PantallaRegistro(navController: NavController) {
                     .height(65.dp)
                     .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF58078),
-                    contentColor = Color(0xFF4F0606)
+                    containerColor = Color(0xFFDE2910),
+                    contentColor = Color(0xFFFFFFFF)
                 ),
                 border = BorderStroke(2.dp, Color(0xFFFFD0CC)),
                 shape = RoundedCornerShape(5.dp)
