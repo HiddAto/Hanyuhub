@@ -97,13 +97,13 @@ fun PantallaVocabulario(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { navController.navigate("crearVocabulario") },
+                onClick = { navController.navigate("crearColeccion/$nombre/$apellido/$email/$pass/$curso/$email") },
                 containerColor = Color(0xFFFFC6C1),
                 contentColor = Color(0xFF4F0606)
             ) {
                 Row (modifier = Modifier.padding(5.dp)) {
                     Icon(Icons.Default.Add, contentDescription = "Add")
-                    Text("Crear Vocabulario")
+                    Text("Crear Colección")
                 }
             }
         }
@@ -121,7 +121,7 @@ fun PantallaVocabulario(
 
             // Boton de ejercicios
             OutlinedButton(
-                onClick = { navController.navigate("vocabularioApp") },
+                onClick = { navController.navigate("misColecciones/$email/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -134,10 +134,10 @@ fun PantallaVocabulario(
                 )
             ) {
                 Icon(Icons.Default.Games,
-                    contentDescription = "Vocabulario App",
+                    contentDescription = "Mis Colecciones",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
-                Text("Vocabulario App",
+                Text("Mis Colecciones",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
                         color = Color(0xFF003366),
