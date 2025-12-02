@@ -33,14 +33,17 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Assignment
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.CollectionsBookmark
 import androidx.compose.material.icons.filled.Games
+import androidx.compose.material.icons.filled.PeopleAlt
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
@@ -59,7 +62,6 @@ fun PantallaHomeAlumno(
     email: String,
     pass: String,
     curso: String) {
-    // https://m3.material.io/components
     val imagenes = listOf(
         R.drawable.imagen_portada_1,
         R.drawable.imagen_portada_2,
@@ -102,11 +104,46 @@ fun PantallaHomeAlumno(
                 containerColor = Color(0xFFF58078),
                 contentColor = Color(0xFF721313)
             ) {
-                // Botón de volver
-                IconButton(onClick = { navController.navigate("start") }) {
+                // Estado para mostrar el diálogo de confirmación
+                var mostrarDialogoSalir by remember { mutableStateOf(false) }
+
+                // Botón de salir
+                IconButton(onClick = { mostrarDialogoSalir = true }) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Volver"
+                        imageVector = Icons.AutoMirrored.Filled.ExitToApp, // ícono más representativo de "cerrar sesión"
+                        contentDescription = "Cerrar sesión",
+                        tint = Color.White
+                    )
+                }
+
+                // Diálogo de confirmación de cierre de sesión
+                if (mostrarDialogoSalir) {
+                    AlertDialog(
+                        onDismissRequest = { mostrarDialogoSalir = false },
+                        confirmButton = {
+                            TextButton(onClick = {
+                                mostrarDialogoSalir = false
+                                // Navegar a pantalla de inicio o login
+                                navController.navigate("start") {
+                                    popUpTo(0) // Limpia el historial de navegación
+                                }
+                            }) {
+                                Text("Cerrar sesión", color = Color(0xFFEE1842))
+                            }
+                        },
+                        dismissButton = {
+                            TextButton(onClick = { mostrarDialogoSalir = false }) {
+                                Text("Cancelar", color = Color.Gray)
+                            }
+                        },
+                        title = {
+                            Text("¿Deseas cerrar sesión?")
+                        },
+                        text = {
+                            Text("Tu sesión actual se cerrará y volverás a la pantalla de inicio.")
+                        },
+                        containerColor = Color.White,
+                        tonalElevation = 4.dp
                     )
                 }
 
@@ -129,9 +166,10 @@ fun PantallaHomeAlumno(
     ) { innerPadding ->
         Column(
             modifier = Modifier
+                .fillMaxWidth()
+                .background(Color(0xFFC7E5FD))
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .background(Color(0xFFC7E5FD)),
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             Image(
@@ -145,7 +183,9 @@ fun PantallaHomeAlumno(
 
             // Boton de Mis Apuntes
             OutlinedButton(
-                onClick = {  },
+                onClick = {
+                    navController.navigate("apuntes/$nombre/$apellido/$email/$pass/$curso")
+                },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -158,7 +198,7 @@ fun PantallaHomeAlumno(
                 )
             ) {
                 Icon(Icons.Default.CollectionsBookmark,
-                    contentDescription = "Add",
+                    contentDescription = "Apuntes",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Mis apuntes",
@@ -171,7 +211,7 @@ fun PantallaHomeAlumno(
             }
 
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("tareas/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -185,7 +225,7 @@ fun PantallaHomeAlumno(
             ) {
                 Icon(
                     Icons.AutoMirrored.Filled.Assignment,
-                    contentDescription = "Add",
+                    contentDescription = "Tareas",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Mis tareas",
@@ -198,7 +238,7 @@ fun PantallaHomeAlumno(
             }
 
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("ejercicios/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -211,7 +251,7 @@ fun PantallaHomeAlumno(
                 )
             ) {
                 Icon(Icons.Default.Games,
-                    contentDescription = "Add",
+                    contentDescription = "Ejercicios",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Ejercicios",
@@ -224,7 +264,7 @@ fun PantallaHomeAlumno(
             }
 
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("vocabularios/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -238,10 +278,37 @@ fun PantallaHomeAlumno(
             ) {
                 Icon(
                     Icons.AutoMirrored.Filled.MenuBook,
-                    contentDescription = "Add",
+                    contentDescription = "Vocabulario",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text("Vocabulario",
+                    modifier = Modifier.padding(start = 8.dp),
+                    style = TextStyle(
+                        color = Color(0xFF721313),
+                        fontSize = 22.sp
+                    )
+                )
+            }
+
+            OutlinedButton(
+                onClick = { navController.navigate("foro/$nombre/$apellido/$email/$pass/$curso") },
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+                    .height(100.dp),
+                shape = RoundedCornerShape(20.dp),
+
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color(0xFFFF5F94),
+                    contentColor = Color(0xFFE80B56),
+                )
+            ) {
+                Icon(
+                    Icons.Default.PeopleAlt,
+                    contentDescription = "Foro",
+                    modifier = Modifier.size(40.dp))
+                Spacer(modifier = Modifier.width(10.dp))
+                Text("Foro",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
                         color = Color(0xFF721313),

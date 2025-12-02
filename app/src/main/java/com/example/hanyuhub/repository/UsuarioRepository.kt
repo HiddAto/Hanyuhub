@@ -41,4 +41,17 @@ class UsuarioRepository {
             throw Exception("Error al validar email: ${response.message()}")
         }
     }
+
+    suspend fun obtenerUsuarioPorMail(mail: String): UsuarioDto? {
+        return try {
+            val response = api.obtenerUsuarioPorMail(mail)
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
 }

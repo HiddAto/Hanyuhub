@@ -1,5 +1,6 @@
 package com.example.hanyuhub
 
+import com.example.hanyuhub.ui.profesor.MisCursosProfesor
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,10 +18,29 @@ import com.example.hanyuhub.ui.theme.HanyuHubTheme
 import com.example.hanyuhub.ui.login.PantallaLogin
 import com.example.hanyuhub.ui.login.PantallaLoginAlumno
 import com.example.hanyuhub.ui.login.PantallaLoginProfesor
+import com.example.hanyuhub.ui.apunte.PantallaApuntes
+import com.example.hanyuhub.ui.apunte.PantallaApuntesDummy
+import com.example.hanyuhub.ui.apunte.PantallaCrearApunte
+import com.example.hanyuhub.ui.apunte.PantallaEditarApunteDummy
+import com.example.hanyuhub.ui.ejercicios.PantallaEjercicios
+import com.example.hanyuhub.ui.foro.PantallaCrearPost
+import com.example.hanyuhub.ui.foro.PantallaForo
 import com.example.hanyuhub.ui.perfil.PantallaPerfilAlumno
 import com.example.hanyuhub.ui.perfil.PantallaPerfilProfesor
+import com.example.hanyuhub.ui.profesor.CrearVocabularioProfe
+import com.example.hanyuhub.ui.profesor.PantallaAsignarTarea
+import com.example.hanyuhub.ui.profesor.PantallaAsignarVocabulario
+import com.example.hanyuhub.ui.profesor.PantallaRevisarTareas
+import com.example.hanyuhub.ui.profesor.PantallaVocabularios
+import com.example.hanyuhub.ui.profesor.VistaCursoProfesor
 import com.example.hanyuhub.ui.register.PantallaRegistro
 import com.example.hanyuhub.ui.start.PantallaInicio
+import com.example.hanyuhub.ui.tarea.PantallaRevisarTarea
+import com.example.hanyuhub.ui.tarea.PantallaTareas
+import com.example.hanyuhub.ui.vocabulario.PantallaCrearVocabulario
+import com.example.hanyuhub.ui.vocabulario.PantallaVocabulario
+import com.example.hanyuhub.ui.vocabulario.PantallaVocabularioApp
+import com.example.hanyuhub.ui.vocabulario.PantallaVocabularioPers
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,5 +134,115 @@ fun MyApp(){
             val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
             PantallaPerfilProfesor(navController, nombre, apellido, email, pass, cursos)
         }
+
+        composable(
+            "apuntes/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaApuntes(navController, nombre, apellido, email, pass, curso)
+        }
+
+        composable("verApunte") { PantallaApuntesDummy(navController) }
+        composable("editarApunte") { PantallaEditarApunteDummy(navController) }
+        composable("crearApunte") { PantallaCrearApunte(navController) }
+
+        composable(
+            "tareas/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaTareas(navController, nombre, apellido, email, pass, curso)
+        }
+
+        composable("verTarea") { PantallaRevisarTarea(navController) }
+
+        composable(
+            "ejercicios/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaEjercicios(navController, nombre, apellido, email, pass, curso)
+        }
+
+        composable(
+            "vocabularios/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaVocabulario(navController, nombre, apellido, email, pass, curso)
+        }
+
+        composable("vocabularioApp") { PantallaVocabularioApp(navController) }
+        composable("vocabularioPers") { PantallaVocabularioPers(navController) }
+        composable("crearVocabulario") { PantallaCrearVocabulario(navController) }
+
+        composable(
+            "foro/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaForo(navController, nombre, apellido, email, pass, curso)
+        }
+
+        composable("crearPost") { PantallaCrearPost(navController) }
+
+        composable("misCursosProfesor") { MisCursosProfesor(navController) }
+        composable("vistaCursoProfesor") { VistaCursoProfesor(navController) }
+        composable("asignarTarea") { PantallaAsignarTarea(navController) }
+        composable("revisarTareas") { PantallaRevisarTareas(navController) }
+        composable("asignarVocabulario") { PantallaAsignarVocabulario(navController) }
+        composable("vocabulariosProfesor") { PantallaVocabularios(navController) }
+        composable("crearVocabularioProfe") { CrearVocabularioProfe(navController) }
     }
 }

@@ -23,7 +23,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.BottomAppBar
@@ -48,6 +47,7 @@ import androidx.navigation.NavController
 import com.example.hanyuhub.R
 import com.example.hanyuhub.model.UsuarioDto
 import com.example.hanyuhub.repository.UsuarioRepository
+import com.example.hanyuhub.ui.theme.CustomTextField
 import kotlinx.coroutines.launch
 
 @Composable
@@ -82,8 +82,8 @@ fun PantallaRegistro(navController: NavController) {
     Scaffold(
         bottomBar = {
             BottomAppBar(
-                containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF721313)
+                containerColor = Color(0xFFDE2910),
+                contentColor = Color(0xFFFFFFFF)
             ) {
                 IconButton(onClick = { navController.navigate("start") }) {
                     Icon(
@@ -99,7 +99,7 @@ fun PantallaRegistro(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF5E9E8))
+                .background(Color(0xFFFFFFFF))
                 .padding(16.dp)
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
@@ -117,14 +117,16 @@ fun PantallaRegistro(navController: NavController) {
             Text(
                 text = "Registrarse",
                 style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 16.dp),
+                //Edité el color para que se vea mejor (revisar modo oscuro de la App)
+                color = Color.DarkGray
             )
 
             // Imagen de registro
             Box(
                 modifier = Modifier
                     .size(170.dp)
-                    .background(Color(0xFFF5E9E8))
+                    .background(Color(0xFFFFFFFF))
                     .padding(20.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -132,12 +134,13 @@ fun PantallaRegistro(navController: NavController) {
                     painter = painterResource(id = R.drawable.ic_login),
                     contentDescription = "Logo Registro",
                     modifier = Modifier.fillMaxSize(),
-                    colorFilter = ColorFilter.tint(Color(0xFF4F0606))
+                    colorFilter = ColorFilter.tint(Color(0xFFFFC107))
                 )
             }
 
             // Campo para el nombre
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = nombre,
                 onValueChange = {
                     nombre = it
@@ -156,7 +159,8 @@ fun PantallaRegistro(navController: NavController) {
             )
 
             // Campo para el apellido
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = apellido,
                 onValueChange = {
                     apellido = it
@@ -176,7 +180,8 @@ fun PantallaRegistro(navController: NavController) {
 
 
             // Campo para el correo
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = email,
                 onValueChange = {
                     email = it
@@ -196,7 +201,8 @@ fun PantallaRegistro(navController: NavController) {
             )
 
             // Campo para la contraseña
-            OutlinedTextField(
+            //OutlinedTextField( -> Se cambió eso para editar los colores del campo de texto
+            CustomTextField(
                 value = pass,
                 onValueChange = {
                     pass = it
@@ -214,7 +220,7 @@ fun PantallaRegistro(navController: NavController) {
             )
 
             // Campo para la contraseña repetida
-            OutlinedTextField(
+            CustomTextField(
                 value = passSec,
                 onValueChange = {
                     passSec = it
@@ -249,7 +255,7 @@ fun PantallaRegistro(navController: NavController) {
                     checked = checked,
                     onCheckedChange = { checked = it },
                 )
-                Text("Mostrar contraseña")
+                Text(text ="Mostrar contraseña", color = Color.Gray)
             }
 
             Spacer(modifier = Modifier.height(15.dp))
@@ -309,8 +315,8 @@ fun PantallaRegistro(navController: NavController) {
                     .height(65.dp)
                     .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF58078),
-                    contentColor = Color(0xFF4F0606)
+                    containerColor = Color(0xFFDE2910),
+                    contentColor = Color(0xFFFFFFFF)
                 ),
                 border = BorderStroke(2.dp, Color(0xFFFFD0CC)),
                 shape = RoundedCornerShape(5.dp)
