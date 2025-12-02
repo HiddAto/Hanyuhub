@@ -37,7 +37,10 @@ import com.example.hanyuhub.ui.register.PantallaRegistro
 import com.example.hanyuhub.ui.start.PantallaInicio
 import com.example.hanyuhub.ui.tarea.PantallaRevisarTarea
 import com.example.hanyuhub.ui.tarea.PantallaTareas
+import com.example.hanyuhub.ui.vocabulario.PantallaColecciones
+import com.example.hanyuhub.ui.vocabulario.PantallaCrearColeccion
 import com.example.hanyuhub.ui.vocabulario.PantallaCrearVocabulario
+import com.example.hanyuhub.ui.vocabulario.PantallaDetalleColeccion
 import com.example.hanyuhub.ui.vocabulario.PantallaVocabulario
 import com.example.hanyuhub.ui.vocabulario.PantallaVocabularioApp
 import com.example.hanyuhub.ui.vocabulario.PantallaVocabularioPers
@@ -244,5 +247,77 @@ fun MyApp(){
         composable("asignarVocabulario") { PantallaAsignarVocabulario(navController) }
         composable("vocabulariosProfesor") { PantallaVocabularios(navController) }
         composable("crearVocabularioProfe") { CrearVocabularioProfe(navController) }
+
+        composable(
+            route = "misColecciones/{mail}/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("mail") { type = NavType.StringType },
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("apellido") { type = NavType.StringType },
+                navArgument("email") { type = NavType.StringType },
+                navArgument("pass") { type = NavType.StringType },
+                navArgument("curso") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val mail = backStackEntry.arguments?.getString("mail") ?: ""
+            val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
+            val apellido = backStackEntry.arguments?.getString("apellido") ?: ""
+            val email = backStackEntry.arguments?.getString("email") ?: ""
+            val pass = backStackEntry.arguments?.getString("pass") ?: ""
+            val curso = backStackEntry.arguments?.getString("curso") ?: ""
+
+            PantallaColecciones(
+                navController = navController,
+                mail = mail,
+                nombre = nombre,
+                apellido = apellido,
+                email = email,
+                pass = pass,
+                curso = curso
+            )
+        }
+
+        composable(
+            "detalleColeccion/{idColeccion}/{mail}",
+            arguments = listOf(
+                navArgument("idColeccion"){ type = NavType.StringType },
+                navArgument("mail"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val idColeccion = backStackEntry.arguments?.getString("idColeccion")!!.toLong()
+            val mail = backStackEntry.arguments?.getString("mail").orEmpty()
+            PantallaDetalleColeccion(navController, idColeccion, mail)
+        }
+
+        composable(
+            "crearColeccion/{nombre}/{apellido}/{email}/{pass}/{curso}/{mail}",
+            arguments = listOf(
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("apellido") { type = NavType.StringType },
+                navArgument("email") { type = NavType.StringType },
+                navArgument("pass") { type = NavType.StringType },
+                navArgument("curso") { type = NavType.StringType },
+                navArgument("mail") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            val mail = backStackEntry.arguments?.getString("mail").orEmpty()
+
+            PantallaCrearColeccion(
+                navController = navController,
+                mail = mail,        // <-- mail que va al backend
+                nombre = nombre,
+                apellido = apellido,
+                email = email,
+                pass = pass,
+                curso = curso
+            )
+        }
+
     }
 }
