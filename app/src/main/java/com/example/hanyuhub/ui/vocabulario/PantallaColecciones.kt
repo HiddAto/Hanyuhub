@@ -32,9 +32,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -119,7 +116,7 @@ fun PantallaColecciones(
             }
         }
     ) { innerPadding ->
-        LazyColumn( // 👈 Usa LazyColumn como el contenedor principal y único
+        LazyColumn( //  Usa LazyColumn como el contenedor principal y único
             modifier = Modifier
                 .fillMaxSize() // Ocupa todo el espacio de la pantalla
                 .background(Color.White)
@@ -133,8 +130,13 @@ fun PantallaColecciones(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 8.dp, vertical = 4.dp) // Espaciado alrededor de la tarjeta
-                            .clickable { navController.navigate("detalleColeccion/${col.id}/$mail") },
-                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp) // Añade una sombra/elevación
+                            .clickable {
+                                val nombreColeccion = col.nombre
+
+                                navController.navigate("pantallaDetalleColeccion/$email/$nombre/$apellido/$pass/$curso/${col.id}/${nombreColeccion}")
+                            },
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp), // Añade una sombra/elevación
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFF39FAB)) // rosado muy suave
                     ) {
                         Row(
                             modifier = Modifier

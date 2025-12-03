@@ -33,9 +33,14 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.hanyuhub.viewmodel.ColeccionViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -45,10 +50,9 @@ fun PantallaEjercicios(
     apellido: String,
     email: String,
     pass: String,
-    curso: String) {
+    curso: String
+) {
 
-    // Le da función para hacer scroll al topbar.
-    // Cuando se hace scroll hacia arriba, la barra se reduce (colapsa), y cuando bajas, se expande de nuevo
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
@@ -68,8 +72,9 @@ fun PantallaEjercicios(
                 containerColor = Color(0xFFF58078),
                 contentColor = Color(0xFF721313)
             ) {
-                // Botón de volver
-                IconButton(onClick = { navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso") }) {
+                IconButton(onClick = {
+                    navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso")
+                }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Volver"
@@ -78,7 +83,6 @@ fun PantallaEjercicios(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                // Botón de perfil
                 IconButton(
                     onClick = {
                         navController.navigate("perfilAlumno/$nombre/$apellido/$email/$pass/$curso")
@@ -93,37 +97,41 @@ fun PantallaEjercicios(
             }
         }
     ) { innerPadding ->
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color(0xFFC7E5FD))
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            // Boton de ejercicios
+            // 🔵 Botón 1: Match Hanzi = Significado
             OutlinedButton(
-                onClick = {  },
+                onClick = {
+                    navController.navigate("MatchHS/$email/$nombre/$apellido/$pass/$curso")
+                },
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(horizontal = 16.dp)
                     .fillMaxWidth()
-                    .height(100.dp),
+                    .height(110.dp),
                 shape = RoundedCornerShape(20.dp),
-
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = Color(0xFF4C99EF),
                     contentColor = Color(0xFF003366),
                 )
             ) {
-                Icon(Icons.Default.Games,
-                    contentDescription = "Ejercicios App",
-                    modifier = Modifier.size(40.dp))
-                Spacer(modifier = Modifier.width(10.dp))
-                Text("Ejercicios App",
-                    modifier = Modifier.padding(start = 8.dp),
+                Icon(
+                    Icons.Default.Games,
+                    contentDescription = "Match",
+                    modifier = Modifier.size(40.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    "Match Hanzi = Significado",
                     style = TextStyle(
                         color = Color(0xFF003366),
                         fontSize = 22.sp
@@ -131,33 +139,37 @@ fun PantallaEjercicios(
                 )
             }
 
-            Spacer(modifier = Modifier.height(15.dp))
-
+            // 🔵 Botón 2: Match Hanzi = Pinyin
             OutlinedButton(
-                onClick = {  },
+                onClick = {
+                    navController.navigate("matchHanziPinyin")
+                },
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(horizontal = 16.dp)
                     .fillMaxWidth()
-                    .height(100.dp),
+                    .height(110.dp),
                 shape = RoundedCornerShape(20.dp),
-
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = Color(0xFF4C99EF),
                     contentColor = Color(0xFF003366),
                 )
             ) {
-                Icon(Icons.Default.Games,
-                    contentDescription = "Ejercicios Personalizados",
-                    modifier = Modifier.size(40.dp))
-                Spacer(modifier = Modifier.width(10.dp))
-                Text("Ejercicios Personalizados",
-                    modifier = Modifier.padding(start = 8.dp),
+                Icon(
+                    Icons.Default.Games,
+                    contentDescription = "Match",
+                    modifier = Modifier.size(40.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    "Match Hanzi = Pinyin",
                     style = TextStyle(
                         color = Color(0xFF003366),
                         fontSize = 22.sp
                     )
                 )
             }
+
+            Spacer(modifier = Modifier.height(40.dp))
         }
     }
 }

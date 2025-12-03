@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.hanyuhub.app-mergeDebugResources-38:/values-v21/values-v21.xml",
+            "outputFile": "com.example.hanyuhub.app-mergeDebugResources-39:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ivaneke\\.gradle\\caches\\8.10.2\\transforms\\e6bfe5726cc4f9d4f16295adf4678c1d\\transformed\\core-1.15.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Ivaneke\\.gradle\\caches\\8.10.2\\transforms\\d63db7465686dedf82d3ac9891a50473\\transformed\\core-1.15.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
