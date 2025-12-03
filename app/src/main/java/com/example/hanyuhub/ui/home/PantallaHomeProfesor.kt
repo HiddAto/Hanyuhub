@@ -14,10 +14,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Assignment
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.CollectionsBookmark
+import androidx.compose.material.icons.filled.PeopleAlt
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ButtonDefaults
@@ -211,9 +213,9 @@ fun PantallaHomeProfesor(
                     )
                 )
             }
-            /*
+
             OutlinedButton(
-                onClick = {  },
+                onClick = { navController.navigate("tareasProfesor/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -230,7 +232,7 @@ fun PantallaHomeProfesor(
                     contentDescription = "Add",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
-                Text("Mis tareas",
+                Text("Crear tareas",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
                         color = Color(0xFF39540F),
@@ -238,7 +240,7 @@ fun PantallaHomeProfesor(
                     )
                 )
             }
-
+            /*
             OutlinedButton(
                 onClick = {  },
                 modifier = Modifier
@@ -293,6 +295,39 @@ fun PantallaHomeProfesor(
                             color = Color.Black.copy(alpha = 0.4f), // Color y transparencia de la sombra
                             offset = Offset(2f, 2f),                // Desplazamiento (x, y)
                             blurRadius = 4f                         // Difuminado
+                        )
+                    )
+                )
+            }
+
+            OutlinedButton(
+                onClick = { navController.navigate("qrProfesor/$nombre/$apellido/$email/$pass/$curso") },
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+                    .height(100.dp),
+                shape = RoundedCornerShape(20.dp),
+
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color(0xFF546CEF),
+                    contentColor = Color(0xFFFFFFFF),
+
+                    )
+            ) {
+                Icon(
+                    Icons.AutoMirrored.Filled.MenuBook,
+                    contentDescription = "Add",
+                    modifier = Modifier.size(40.dp))
+                Spacer(modifier = Modifier.width(10.dp))
+                Text("Escaner QR",
+                    modifier = Modifier.padding(start = 8.dp),
+                    style = TextStyle(
+                        color = Color(0xFFFFFFFF),
+                        fontSize = 22.sp,
+                        shadow = Shadow(
+                            color = Color.Black.copy(alpha = 0.4f),
+                            offset = Offset(2f, 2f),
+                            blurRadius = 4f
                         )
                     )
                 )

@@ -87,11 +87,11 @@ fun PantallaHomeAlumno(
                 colors = topAppBarColors(
                     containerColor = Color(0xFFF58078),
                     scrolledContainerColor = Color(0xFFF58078),
-                    titleContentColor = Color(0xFFFFFFFF)
+                    titleContentColor = Color(0xFF721313)
                 ),
                 title = {
                     Text(
-                        "¡Nǐ Hǎo, $nombre $apellido!",
+                        "¡Bienvenid@ $nombre $apellido!",
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -102,7 +102,7 @@ fun PantallaHomeAlumno(
         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFFFFFFFF)
+                contentColor = Color(0xFF721313)
             ) {
                 // Estado para mostrar el diálogo de confirmación
                 var mostrarDialogoSalir by remember { mutableStateOf(false) }
@@ -211,7 +211,7 @@ fun PantallaHomeAlumno(
             }
 
             OutlinedButton(
-                onClick = { navController.navigate("tareas/$nombre/$apellido/$email/$pass/$curso") },
+                onClick = { navController.navigate("tareasAlumno/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -246,8 +246,8 @@ fun PantallaHomeAlumno(
                 shape = RoundedCornerShape(20.dp),
 
                 colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFFE8407B),
-                    contentColor = Color(0xFFFFFFFF),
+                    containerColor = Color(0xFF8C73B4),
+                    contentColor = Color(0xFF200C44),
                 )
             ) {
                 Icon(Icons.Default.Games,
@@ -273,7 +273,7 @@ fun PantallaHomeAlumno(
 
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = Color(0xFFF38B84),
-                    contentColor = Color(0xFFFFFFFF),
+                    contentColor = Color(0xFF721313),
                 )
             ) {
                 Icon(
@@ -291,7 +291,7 @@ fun PantallaHomeAlumno(
             }
 
             OutlinedButton(
-                onClick = { navController.navigate("foro/$nombre/$apellido/$email/$pass/$curso") },
+                onClick = { navController.navigate("qrAlumno/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -305,10 +305,10 @@ fun PantallaHomeAlumno(
             ) {
                 Icon(
                     Icons.Default.PeopleAlt,
-                    contentDescription = "Foro",
+                    contentDescription = "QR",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
-                Text("Foro",
+                Text("QR Usuario",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
                         color = Color(0xFF721313),

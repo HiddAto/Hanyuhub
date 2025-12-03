@@ -3,7 +3,6 @@ package com.example.hanyuhub.ui.ejercicios
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,23 +27,15 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Games
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.hanyuhub.viewmodel.ColeccionViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -54,9 +45,10 @@ fun PantallaEjercicios(
     apellido: String,
     email: String,
     pass: String,
-    curso: String
-) {
+    curso: String) {
 
+    // Le da función para hacer scroll al topbar.
+    // Cuando se hace scroll hacia arriba, la barra se reduce (colapsa), y cuando bajas, se expande de nuevo
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
@@ -64,7 +56,7 @@ fun PantallaEjercicios(
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFF58078),
-                    titleContentColor = Color(0xFFFFFFFF)
+                    titleContentColor = Color(0xFF721313)
                 ),
                 title = {
                     Text("EJERCICIOS", style = MaterialTheme.typography.headlineMedium)
@@ -74,11 +66,10 @@ fun PantallaEjercicios(
         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFFFFFFFF)
+                contentColor = Color(0xFF721313)
             ) {
-                IconButton(onClick = {
-                    navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso")
-                }) {
+                // Botón de volver
+                IconButton(onClick = { navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso") }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Volver"
@@ -87,6 +78,7 @@ fun PantallaEjercicios(
 
                 Spacer(modifier = Modifier.weight(1f))
 
+                // Botón de perfil
                 IconButton(
                     onClick = {
                         navController.navigate("perfilAlumno/$nombre/$apellido/$email/$pass/$curso")
@@ -101,91 +93,71 @@ fun PantallaEjercicios(
             }
         }
     ) { innerPadding ->
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFFFFFFF))
+                .background(Color(0xFFC7E5FD))
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            // 🔵 Botón 1: Match Hanzi = Significado
+            // Boton de ejercicios
             OutlinedButton(
-                onClick = {
-                    navController.navigate("MatchHS/$email/$nombre/$apellido/$pass/$curso")
-                },
+                onClick = {  },
                 modifier = Modifier
-                    .padding(horizontal = 16.dp)
+                    .padding(16.dp)
                     .fillMaxWidth()
-                    .height(110.dp),
+                    .height(100.dp),
                 shape = RoundedCornerShape(20.dp),
+
                 colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFFF33A78),
-                    contentColor = Color(0xFFFFFFFF),
+                    containerColor = Color(0xFF4C99EF),
+                    contentColor = Color(0xFF003366),
                 )
             ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Start,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Icon(
-                        Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = "Match",
-                        modifier = Modifier.size(40.dp)
+                Icon(Icons.Default.Games,
+                    contentDescription = "Ejercicios App",
+                    modifier = Modifier.size(40.dp))
+                Spacer(modifier = Modifier.width(10.dp))
+                Text("Ejercicios App",
+                    modifier = Modifier.padding(start = 8.dp),
+                    style = TextStyle(
+                        color = Color(0xFF003366),
+                        fontSize = 22.sp
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Text(
-                        "Match Hanzi = Significado",
-                        style = TextStyle(
-                            color = Color(0xFFFFFFFF),
-                            fontSize = 22.sp
-                        )
-                    )
-                }
+                )
             }
 
-            // 🔵 Botón 2: Match Hanzi = Pinyin
+            Spacer(modifier = Modifier.height(15.dp))
+
             OutlinedButton(
-                onClick = {
-                    navController.navigate("MatchHP/$email/$nombre/$apellido/$pass/$curso")
-                },
+                onClick = {  },
                 modifier = Modifier
-                    .padding(horizontal = 16.dp)
+                    .padding(16.dp)
                     .fillMaxWidth()
-                    .height(110.dp),
+                    .height(100.dp),
                 shape = RoundedCornerShape(20.dp),
+
                 colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFFF33A78),
-                    contentColor = Color(0xFFFFFFFF),
+                    containerColor = Color(0xFF4C99EF),
+                    contentColor = Color(0xFF003366),
                 )
             ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Start,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Icon(
-                        Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = "Match",
-                        modifier = Modifier.size(40.dp)
+                Icon(Icons.Default.Games,
+                    contentDescription = "Ejercicios Personalizados",
+                    modifier = Modifier.size(40.dp))
+                Spacer(modifier = Modifier.width(10.dp))
+                Text("Ejercicios Personalizados",
+                    modifier = Modifier.padding(start = 8.dp),
+                    style = TextStyle(
+                        color = Color(0xFF003366),
+                        fontSize = 22.sp
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Text(
-                        "Match Hanzi = Pinyin",
-                        style = TextStyle(
-                            color = Color(0xFFFFFFFF),
-                            fontSize = 22.sp
-                        )
-                    )
-                }
+                )
             }
-
-            Spacer(modifier = Modifier.height(40.dp))
         }
     }
 }

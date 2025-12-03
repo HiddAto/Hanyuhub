@@ -36,7 +36,6 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.TopAppBar
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
@@ -60,7 +59,7 @@ fun PantallaVocabulario(
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFF58078),
-                    titleContentColor = Color(0xFFFFFFFF)
+                    titleContentColor = Color(0xFF721313)
                 ),
                 title = {
                     Text("VOCABULARIOS", style = MaterialTheme.typography.headlineMedium)
@@ -70,7 +69,7 @@ fun PantallaVocabulario(
         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFFFFFFFF)
+                contentColor = Color(0xFF721313)
             ) {
                 // Botón de volver
                 IconButton(onClick = { navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso") }) {
@@ -112,7 +111,7 @@ fun PantallaVocabulario(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFFFFFFF))
+                .background(Color(0xFFC7E5FD))
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(4.dp),
@@ -130,27 +129,21 @@ fun PantallaVocabulario(
                 shape = RoundedCornerShape(20.dp),
 
                 colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFFDE5D52),
-                    contentColor = Color(0xFFFFFFFF),
+                    containerColor = Color(0xFF4C99EF),
+                    contentColor = Color(0xFF003366),
                 )
             ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Start,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Icon(Icons.Default.Games,
-                        contentDescription = "Mis Colecciones",
-                        modifier = Modifier.size(40.dp))
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text("Mis Colecciones",
-                        modifier = Modifier.padding(start = 8.dp),
-                        style = TextStyle(
-                            color = Color(0xFFFFFFFF),
-                            fontSize = 22.sp
-                        )
+                Icon(Icons.Default.Games,
+                    contentDescription = "Mis Colecciones",
+                    modifier = Modifier.size(40.dp))
+                Spacer(modifier = Modifier.width(10.dp))
+                Text("Mis Colecciones",
+                    modifier = Modifier.padding(start = 8.dp),
+                    style = TextStyle(
+                        color = Color(0xFF003366),
+                        fontSize = 22.sp
                     )
-                }
+                )
             }
 
             Spacer(modifier = Modifier.height(15.dp))
@@ -164,15 +157,10 @@ fun PantallaVocabulario(
                 shape = RoundedCornerShape(20.dp),
 
                 colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFFDE5D52),
-                    contentColor = Color(0xFFFFFFFF),
+                    containerColor = Color(0xFF4C99EF),
+                    contentColor = Color(0xFF003366),
                 )
             ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Start,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
                 Icon(Icons.Default.Games,
                     contentDescription = "Vocabulario Personalizados",
                     modifier = Modifier.size(40.dp))
@@ -180,11 +168,10 @@ fun PantallaVocabulario(
                 Text("Vocabulario Personalizados",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
-                        color = Color(0xFFFFFFFF),
+                        color = Color(0xFF003366),
                         fontSize = 22.sp
                     )
                 )
-                }
             }
         }
     }

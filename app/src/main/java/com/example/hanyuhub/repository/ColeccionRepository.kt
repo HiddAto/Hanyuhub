@@ -5,7 +5,6 @@ import com.example.hanyuhub.model.CrearColeccionDTO
 import com.example.hanyuhub.model.Palabra
 import com.example.hanyuhub.network.RetrofitClient
 import retrofit2.await
-import retrofit2.awaitResponse
 
 class ColeccionRepository {
 
@@ -24,8 +23,9 @@ class ColeccionRepository {
             throw Exception("Error al crear la colección")
         }
     }
+
     suspend fun eliminarColeccion(id: Long) {
-        api.eliminarColeccion(id).awaitResponse()
+        api.eliminarColeccion(id).await()
     }
 
     suspend fun listarPalabras(idColeccion: Long): List<Palabra> {
