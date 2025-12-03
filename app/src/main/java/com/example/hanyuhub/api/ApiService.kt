@@ -4,6 +4,7 @@ import com.example.hanyuhub.model.Coleccion
 import com.example.hanyuhub.model.CrearColeccionDTO
 import com.example.hanyuhub.model.LoginDto
 import com.example.hanyuhub.model.Palabra
+import com.example.hanyuhub.model.Tareas
 import com.example.hanyuhub.model.UsuarioDto
 import retrofit2.Call
 import retrofit2.Response
@@ -11,6 +12,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -61,4 +63,31 @@ interface ApiService {
         @Path("idColeccion") idColeccion: Long,
         @Body palabra: Palabra
     ): Call<Palabra>
+
+    // Crear tarea (solo profesores en backend)
+    @POST("tareas/crear")
+    suspend fun crearTarea(@Body tarea: Tareas): Response<Tareas>
+
+    // Editar tarea (solo profesores en backend)
+    @PUT("tareas/editar/{id}")
+    suspend fun editarTarea(
+        @Path("id") id: String,
+        @Body tarea: Tareas
+    ): Response<Tareas>
+
+    // Borrar tarea (solo profesores en backend)
+    @DELETE("tareas/borrar/{id}")
+    suspend fun borrarTarea(@Path("id") id: String): Response<Void>
+
+    // Listar todas las tareas (alumnos y profesores)
+    @GET("tareas")
+    suspend fun listarTareas(): Response<List<Tareas>>
+
+    // Obtener tarea por id
+    @GET("tareas/{id}")
+    suspend fun obtenerTarea(@Path("id") id: String): Response<Tareas>
+
+    // Listar tareas por curso
+    @GET("tareas/curso/{curso}")
+    suspend fun listarTareasPorCurso(@Path("curso") curso: String): Response<List<Tareas>>
 }

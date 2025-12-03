@@ -5,5 +5,6 @@ data class Tareas(
     val descripcion: String,
     val fechaPub: String,
     val fechaLim: String,
-    val contenido: String
+    val contenido: String,
+    val id: String
 )

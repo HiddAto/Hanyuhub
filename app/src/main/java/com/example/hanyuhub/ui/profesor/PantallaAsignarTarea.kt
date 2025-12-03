@@ -1,5 +1,7 @@
 package com.example.hanyuhub.ui.profesor
 
+import android.util.Log
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +27,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -32,29 +37,49 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.hanyuhub.model.Tareas
+import com.example.hanyuhub.repository.TareaRepository
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaAsignarTarea(
-    navController: NavController
+    navController: NavController,
+    nombre: String,
+    apellido: String,
+    email: String,
+    pass: String,
+    curso: String
 ) {
+    val tareaRepo = remember { TareaRepository() }
+    val coroutine = rememberCoroutineScope()
+
+    val snackbarHostState = remember { SnackbarHostState() }
+
+
     // Permite controlar el foco de los elementos
     val focusManager = LocalFocusManager.current
 
     // Variables vacías
+    var id by remember { mutableStateOf("") }
     var titulo by remember { mutableStateOf("") }
     var descripcion by remember { mutableStateOf("") }
-    var fecha by remember { mutableStateOf("") }
+    var fechaPub by remember { mutableStateOf("") }
+    var fechaLim by remember { mutableStateOf("") }
     var contenido by remember { mutableStateOf("") }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -120,6 +145,22 @@ fun PantallaAsignarTarea(
                 ) {
 
                     Text(
+                        text = "ID:",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = Color(0xFF721313)
+                    )
+                    OutlinedTextField(
+                        value = id,
+                        onValueChange = { id = it },
+                        label = { Text("ID") },
+                        singleLine = false,
+                        modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
+                    )
+
+                    Spacer(Modifier.height(8.dp))
+
+                    Text(
                         text = "Título:",
                         style = MaterialTheme.typography.titleMedium,
                         color = Color(0xFF721313)
@@ -130,6 +171,7 @@ fun PantallaAsignarTarea(
                         label = { Text("Titulo") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
 
                     Spacer(Modifier.height(8.dp))
@@ -145,21 +187,39 @@ fun PantallaAsignarTarea(
                         label = { Text("Descripción") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
 
                     Spacer(Modifier.height(8.dp))
 
                     Text(
-                        text = "Fecha:",
+                        text = "Fecha de publicación:",
                         style = MaterialTheme.typography.titleMedium,
                         color = Color(0xFF721313)
                     )
                     OutlinedTextField(
-                        value = fecha,
-                        onValueChange = { fecha = it },
-                        label = { Text("Fecha") },
+                        value = fechaPub,
+                        onValueChange = { fechaPub = it },
+                        label = { Text("Fecha de publicación") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
+                    )
+
+                    Spacer(Modifier.height(8.dp))
+
+                    Text(
+                        text = "Fecha límite:",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = Color(0xFF721313)
+                    )
+                    OutlinedTextField(
+                        value = fechaLim,
+                        onValueChange = { fechaLim = it },
+                        label = { Text("Fecha límite") },
+                        singleLine = false,
+                        modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
 
                     Spacer(Modifier.height(8.dp))
@@ -175,30 +235,67 @@ fun PantallaAsignarTarea(
                         label = { Text("Contenido") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
                 }
                 Spacer(Modifier.height(12.dp))
             }
             Spacer(Modifier.height(8.dp))
+
             // Botón Crear
             Button(
                 onClick = {
-                    navController.popBackStack()
+                    coroutine.launch {
+                        try {
+                            val tarea = Tareas(
+                                id = id,
+                                titulo = titulo,
+                                descripcion = descripcion,
+                                fechaPub = fechaPub,
+                                fechaLim = fechaLim,
+                                contenido = contenido
+                            )
+
+                            val creada = tareaRepo.crearTarea(tarea)
+
+                            if (creada != null) {
+                                // Muestra mensaje
+                                snackbarHostState.showSnackbar(
+                                    message = "Tarea creada correctamente",
+                                    duration = SnackbarDuration.Short
+                                )
+
+                                // Espera
+                                delay(2000)
+
+                                // Vuelve atras
+                                navController.popBackStack()
+
+                            } else {
+                                Log.e("PantallaAsignarTarea", "Error creando tarea")
+                            }
+
+                        } catch (e: Exception) {
+                            Log.e("PantallaAsignarTarea", "Excepción creando tarea", e)
+                        }
+                    }
                 },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF58078),
-                    contentColor = Color(0xFF721313)
-                ),
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 40.dp)
-                    .height(50.dp),
-                shape = RoundedCornerShape(12.dp)
+                    .height(65.dp)
+                    .fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFDE2910),
+                    contentColor = Color.White
+                ),
+                border = BorderStroke(2.dp, Color(0xFFFFD0CC)),
+                shape = RoundedCornerShape(5.dp)
             ) {
-                Text("CREAR", style = MaterialTheme.typography.titleMedium)
+                Text("CREAR TAREA")
             }
 
-            Spacer(modifier = Modifier.height(500.dp))
+
+
+            Spacer(modifier = Modifier.height(150.dp))
         }
     }
 }

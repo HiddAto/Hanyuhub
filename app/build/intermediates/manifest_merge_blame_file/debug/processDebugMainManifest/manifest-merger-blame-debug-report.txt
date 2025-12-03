@@ -8,151 +8,266 @@
 8        android:minSdkVersion="24"
 9        android:targetSdkVersion="35" />
 10
-11    <!-- Necesario para conexion API -->
+11    <!-- Permisos -->
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:6:5-66
+12-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:6:5-67
 12-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:6:22-64
-13
-14    <permission
-14-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e6bfe5726cc4f9d4f16295adf4678c1d\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
-15        android:name="com.example.hanyuhub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-15-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e6bfe5726cc4f9d4f16295adf4678c1d\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
-16        android:protectionLevel="signature" />
-16-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e6bfe5726cc4f9d4f16295adf4678c1d\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
-17
-18    <uses-permission android:name="com.example.hanyuhub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-18-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e6bfe5726cc4f9d4f16295adf4678c1d\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
-18-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e6bfe5726cc4f9d4f16295adf4678c1d\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:7:5-65
+13-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:7:22-62
+14
+15    <!-- Features -->
+16    <uses-feature
+16-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:10:5-12:36
+17        android:name="android.hardware.camera"
+17-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:11:9-47
+18        android:required="false" />
+18-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:12:9-33
 19
-20    <application
-20-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:8:5-32:19
-21        android:allowBackup="true"
-21-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:9:9-35
-22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-22-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e6bfe5726cc4f9d4f16295adf4678c1d\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
-23        android:dataExtractionRules="@xml/data_extraction_rules"
-23-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:10:9-65
-24        android:debuggable="true"
-25        android:extractNativeLibs="false"
-26        android:fullBackupContent="@xml/backup_rules"
-26-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:11:9-54
-27        android:icon="@mipmap/ic_launcher_hanyuhub"
-27-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:12:9-52
-28        android:label="@string/app_name"
-28-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:13:9-41
-29        android:networkSecurityConfig="@xml/network_security_config"
-29-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:18:9-69
-30        android:roundIcon="@mipmap/ic_launcher_hanyuhub_round"
-30-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:14:9-63
-31        android:supportsRtl="true"
-31-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:15:9-35
-32        android:testOnly="true"
-33        android:theme="@style/Theme.HanyuHub" >
-33-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:16:9-46
-34        <activity
-34-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:20:9-31:20
-35            android:name="com.example.hanyuhub.MainActivity"
-35-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:21:13-41
-36            android:exported="true"
-36-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:22:13-36
-37            android:label="@string/app_name"
-37-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:23:13-45
-38            android:screenOrientation="portrait"
-38-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:24:13-49
-39            android:theme="@style/Theme.HanyuHub" >
-39-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:25:13-50
-40            <intent-filter>
-40-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:26:13-30:29
-41                <action android:name="android.intent.action.MAIN" />
-41-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:27:17-69
-41-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:27:25-66
-42
-43                <category android:name="android.intent.category.LAUNCHER" />
-43-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:29:17-77
-43-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:29:27-74
-44            </intent-filter>
-45        </activity>
-46        <activity
-46-->[androidx.compose.ui:ui-test-manifest:1.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\269e49c951fccd1ac7a8e4679c5e3174\transformed\ui-test-manifest-1.9.4\AndroidManifest.xml:23:9-26:79
-47            android:name="androidx.activity.ComponentActivity"
-47-->[androidx.compose.ui:ui-test-manifest:1.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\269e49c951fccd1ac7a8e4679c5e3174\transformed\ui-test-manifest-1.9.4\AndroidManifest.xml:24:13-63
-48            android:exported="true"
-48-->[androidx.compose.ui:ui-test-manifest:1.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\269e49c951fccd1ac7a8e4679c5e3174\transformed\ui-test-manifest-1.9.4\AndroidManifest.xml:25:13-36
-49            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
-49-->[androidx.compose.ui:ui-test-manifest:1.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\269e49c951fccd1ac7a8e4679c5e3174\transformed\ui-test-manifest-1.9.4\AndroidManifest.xml:26:13-76
-50
-51        <provider
-51-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5c6fa60863f340965326e6acb2b2663d\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
-52            android:name="androidx.startup.InitializationProvider"
-52-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5c6fa60863f340965326e6acb2b2663d\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
-53            android:authorities="com.example.hanyuhub.androidx-startup"
-53-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5c6fa60863f340965326e6acb2b2663d\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
-54            android:exported="false" >
-54-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5c6fa60863f340965326e6acb2b2663d\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
-55            <meta-data
-55-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5c6fa60863f340965326e6acb2b2663d\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
-56                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-56-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5c6fa60863f340965326e6acb2b2663d\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
-57                android:value="androidx.startup" />
-57-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5c6fa60863f340965326e6acb2b2663d\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+20    <permission
+20-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\dd15a773f83540fde27f63dc0e267565\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+21        android:name="com.example.hanyuhub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+21-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\dd15a773f83540fde27f63dc0e267565\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+22        android:protectionLevel="signature" />
+22-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\dd15a773f83540fde27f63dc0e267565\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+23
+24    <uses-permission android:name="com.example.hanyuhub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+24-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\dd15a773f83540fde27f63dc0e267565\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+24-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\dd15a773f83540fde27f63dc0e267565\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+25    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+26-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\791f324e628ef8d92a3e8ff2c59c382c\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:25:5-79
+26-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\791f324e628ef8d92a3e8ff2c59c382c\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:25:22-76
+27
+28    <application
+28-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:14:5-38:19
+29        android:allowBackup="true"
+29-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:15:9-35
+30        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+30-->[androidx.core:core:1.15.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\dd15a773f83540fde27f63dc0e267565\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
+31        android:dataExtractionRules="@xml/data_extraction_rules"
+31-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:16:9-65
+32        android:debuggable="true"
+33        android:extractNativeLibs="false"
+34        android:fullBackupContent="@xml/backup_rules"
+34-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:17:9-54
+35        android:icon="@mipmap/ic_launcher_hanyuhub"
+35-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:18:9-52
+36        android:label="@string/app_name"
+36-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:19:9-41
+37        android:networkSecurityConfig="@xml/network_security_config"
+37-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:23:9-69
+38        android:roundIcon="@mipmap/ic_launcher_hanyuhub_round"
+38-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:20:9-63
+39        android:supportsRtl="true"
+39-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:21:9-35
+40        android:theme="@style/Theme.HanyuHub" >
+40-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:22:9-46
+41        <activity
+41-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:26:9-36:20
+42            android:name="com.example.hanyuhub.MainActivity"
+42-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:27:13-41
+43            android:exported="true"
+43-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:28:13-36
+44            android:label="@string/app_name"
+44-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:29:13-45
+45            android:screenOrientation="portrait"
+45-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:30:13-49
+46            android:theme="@style/Theme.HanyuHub" >
+46-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:31:13-50
+47            <intent-filter>
+47-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:32:13-35:29
+48                <action android:name="android.intent.action.MAIN" />
+48-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:33:17-69
+48-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:33:25-66
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:34:17-77
+50-->C:\Users\Ivaneke\Desktop\HanyuHub\Hanyuhub\app\src\main\AndroidManifest.xml:34:27-74
+51            </intent-filter>
+52        </activity>
+53
+54        <service
+54-->[androidx.camera:camera-camera2:1.3.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e15875d9d210df8be1cabe5b35af5729\transformed\camera-camera2-1.3.4\AndroidManifest.xml:24:9-33:19
+55            android:name="androidx.camera.core.impl.MetadataHolderService"
+55-->[androidx.camera:camera-camera2:1.3.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e15875d9d210df8be1cabe5b35af5729\transformed\camera-camera2-1.3.4\AndroidManifest.xml:25:13-75
+56            android:enabled="false"
+56-->[androidx.camera:camera-camera2:1.3.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e15875d9d210df8be1cabe5b35af5729\transformed\camera-camera2-1.3.4\AndroidManifest.xml:26:13-36
+57            android:exported="false" >
+57-->[androidx.camera:camera-camera2:1.3.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e15875d9d210df8be1cabe5b35af5729\transformed\camera-camera2-1.3.4\AndroidManifest.xml:27:13-37
 58            <meta-data
-58-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\0d0fea66e64fbb8886d1b483ab2f342e\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
-59                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-59-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\0d0fea66e64fbb8886d1b483ab2f342e\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
-60                android:value="androidx.startup" />
-60-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\0d0fea66e64fbb8886d1b483ab2f342e\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
-61            <meta-data
-61-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-62                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-62-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-63                android:value="androidx.startup" />
-63-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-64        </provider>
-65
+58-->[androidx.camera:camera-camera2:1.3.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e15875d9d210df8be1cabe5b35af5729\transformed\camera-camera2-1.3.4\AndroidManifest.xml:30:13-32:89
+59                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+59-->[androidx.camera:camera-camera2:1.3.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e15875d9d210df8be1cabe5b35af5729\transformed\camera-camera2-1.3.4\AndroidManifest.xml:31:17-103
+60                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+60-->[androidx.camera:camera-camera2:1.3.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\e15875d9d210df8be1cabe5b35af5729\transformed\camera-camera2-1.3.4\AndroidManifest.xml:32:17-86
+61        </service>
+62
+63        <activity
+63-->[androidx.compose.ui:ui-tooling-android:1.9.5] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\721947c6cbd51c9032daa1ccca6ab9b9\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
+64            android:name="androidx.compose.ui.tooling.PreviewActivity"
+64-->[androidx.compose.ui:ui-tooling-android:1.9.5] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\721947c6cbd51c9032daa1ccca6ab9b9\transformed\ui-tooling\AndroidManifest.xml:24:13-71
+65            android:exported="true" />
+65-->[androidx.compose.ui:ui-tooling-android:1.9.5] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\721947c6cbd51c9032daa1ccca6ab9b9\transformed\ui-tooling\AndroidManifest.xml:25:13-36
 66        <activity
-66-->[androidx.compose.ui:ui-tooling-android:1.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a9b7788f50261f27879a1b45028faf52\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
-67            android:name="androidx.compose.ui.tooling.PreviewActivity"
-67-->[androidx.compose.ui:ui-tooling-android:1.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a9b7788f50261f27879a1b45028faf52\transformed\ui-tooling\AndroidManifest.xml:24:13-71
-68            android:exported="true" />
-68-->[androidx.compose.ui:ui-tooling-android:1.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a9b7788f50261f27879a1b45028faf52\transformed\ui-tooling\AndroidManifest.xml:25:13-36
-69
-70        <receiver
-70-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-71            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-71-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-72            android:directBootAware="false"
-72-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-73            android:enabled="true"
-73-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-74            android:exported="true"
-74-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-75            android:permission="android.permission.DUMP" >
-75-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-76            <intent-filter>
-76-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-77                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-77-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-77-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-78            </intent-filter>
-79            <intent-filter>
-79-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-80                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-80-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-80-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-81            </intent-filter>
-82            <intent-filter>
-82-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-83                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-83-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-83-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-84            </intent-filter>
-85            <intent-filter>
-85-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-86                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-86-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-86-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\13ea158f882c367e8f5113f8cfa409a7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-87            </intent-filter>
-88        </receiver>
-89    </application>
-90
-91</manifest>
+66-->[androidx.compose.ui:ui-test-manifest:1.9.5] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\9e90828c0cd5c8a91f6add69d5b4ad1d\transformed\ui-test-manifest-1.9.5\AndroidManifest.xml:23:9-26:79
+67            android:name="androidx.activity.ComponentActivity"
+67-->[androidx.compose.ui:ui-test-manifest:1.9.5] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\9e90828c0cd5c8a91f6add69d5b4ad1d\transformed\ui-test-manifest-1.9.5\AndroidManifest.xml:24:13-63
+68            android:exported="true"
+68-->[androidx.compose.ui:ui-test-manifest:1.9.5] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\9e90828c0cd5c8a91f6add69d5b4ad1d\transformed\ui-test-manifest-1.9.5\AndroidManifest.xml:25:13-36
+69            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+69-->[androidx.compose.ui:ui-test-manifest:1.9.5] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\9e90828c0cd5c8a91f6add69d5b4ad1d\transformed\ui-test-manifest-1.9.5\AndroidManifest.xml:26:13-76
+70
+71        <service
+71-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5221706281f9f61069e337db7a438729\transformed\play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:9:9-15:19
+72            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+72-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5221706281f9f61069e337db7a438729\transformed\play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:10:13-91
+73            android:directBootAware="true"
+73-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:17:13-43
+74            android:exported="false" >
+74-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5221706281f9f61069e337db7a438729\transformed\play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:11:13-37
+75            <meta-data
+75-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5221706281f9f61069e337db7a438729\transformed\play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:12:13-14:85
+76                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
+76-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5221706281f9f61069e337db7a438729\transformed\play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:13:17-120
+77                android:value="com.google.firebase.components.ComponentRegistrar" />
+77-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5221706281f9f61069e337db7a438729\transformed\play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:14:17-82
+78            <meta-data
+78-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\96057ee5e9cafd183cbaa68c9bf1c778\transformed\vision-common-17.3.0\AndroidManifest.xml:12:13-14:85
+79                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+79-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\96057ee5e9cafd183cbaa68c9bf1c778\transformed\vision-common-17.3.0\AndroidManifest.xml:13:17-124
+80                android:value="com.google.firebase.components.ComponentRegistrar" />
+80-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\96057ee5e9cafd183cbaa68c9bf1c778\transformed\vision-common-17.3.0\AndroidManifest.xml:14:17-82
+81            <meta-data
+81-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:20:13-22:85
+82                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+82-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:21:17-120
+83                android:value="com.google.firebase.components.ComponentRegistrar" />
+83-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:22:17-82
+84        </service>
+85
+86        <provider
+86-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:9:9-13:38
+87            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+87-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:10:13-78
+88            android:authorities="com.example.hanyuhub.mlkitinitprovider"
+88-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:11:13-69
+89            android:exported="false"
+89-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:12:13-37
+90            android:initOrder="99" />
+90-->[com.google.mlkit:common:18.9.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\f2585dfa2a884a409cd7eb38ce198f60\transformed\common-18.9.0\AndroidManifest.xml:13:13-35
+91
+92        <activity
+92-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a03fd227e99702583b49e9a08e690572\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+93            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+93-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a03fd227e99702583b49e9a08e690572\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+94            android:exported="false"
+94-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a03fd227e99702583b49e9a08e690572\transformed\play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+95            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+95-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a03fd227e99702583b49e9a08e690572\transformed\play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+96
+97        <meta-data
+97-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a2f485fe9f29d646eb232507f1a031fa\transformed\play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+98            android:name="com.google.android.gms.version"
+98-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a2f485fe9f29d646eb232507f1a031fa\transformed\play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+99            android:value="@integer/google_play_services_version" />
+99-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\a2f485fe9f29d646eb232507f1a031fa\transformed\play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+100
+101        <provider
+101-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\79fd2655f5715339e09faa23f5347ac9\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+102            android:name="androidx.startup.InitializationProvider"
+102-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\79fd2655f5715339e09faa23f5347ac9\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+103            android:authorities="com.example.hanyuhub.androidx-startup"
+103-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\79fd2655f5715339e09faa23f5347ac9\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+104            android:exported="false" >
+104-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\79fd2655f5715339e09faa23f5347ac9\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+105            <meta-data
+105-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\79fd2655f5715339e09faa23f5347ac9\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+106                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+106-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\79fd2655f5715339e09faa23f5347ac9\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+107                android:value="androidx.startup" />
+107-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\79fd2655f5715339e09faa23f5347ac9\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+108            <meta-data
+108-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5110080a23e7737ba9912b41f6b5fee5\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
+109                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+109-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5110080a23e7737ba9912b41f6b5fee5\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
+110                android:value="androidx.startup" />
+110-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\5110080a23e7737ba9912b41f6b5fee5\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
+111            <meta-data
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+112                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+112-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+113                android:value="androidx.startup" />
+113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+114        </provider>
+115
+116        <receiver
+116-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+117            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+117-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+118            android:directBootAware="false"
+118-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+119            android:enabled="true"
+119-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+120            android:exported="true"
+120-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+121            android:permission="android.permission.DUMP" >
+121-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+122            <intent-filter>
+122-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+123                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+123-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+123-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+124            </intent-filter>
+125            <intent-filter>
+125-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+126                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+126-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+126-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+127            </intent-filter>
+128            <intent-filter>
+128-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+129                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+129-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+129-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+130            </intent-filter>
+131            <intent-filter>
+131-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+132                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+132-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+132-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\827ce5bd2797d17aaf1540bd327f9fcb\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+133            </intent-filter>
+134        </receiver>
+135
+136        <service
+136-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\791f324e628ef8d92a3e8ff2c59c382c\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:29:9-35:19
+137            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+137-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\791f324e628ef8d92a3e8ff2c59c382c\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:30:13-103
+138            android:exported="false" >
+138-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\791f324e628ef8d92a3e8ff2c59c382c\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:31:13-37
+139            <meta-data
+139-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\791f324e628ef8d92a3e8ff2c59c382c\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:32:13-34:39
+140                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+140-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\791f324e628ef8d92a3e8ff2c59c382c\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:33:17-94
+141                android:value="cct" />
+141-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\791f324e628ef8d92a3e8ff2c59c382c\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:34:17-36
+142        </service>
+143        <service
+143-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\fb09933874296d8375aa05381dadc0c5\transformed\transport-runtime-2.2.6\AndroidManifest.xml:26:9-30:19
+144            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+144-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\fb09933874296d8375aa05381dadc0c5\transformed\transport-runtime-2.2.6\AndroidManifest.xml:27:13-117
+145            android:exported="false"
+145-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\fb09933874296d8375aa05381dadc0c5\transformed\transport-runtime-2.2.6\AndroidManifest.xml:28:13-37
+146            android:permission="android.permission.BIND_JOB_SERVICE" >
+146-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\fb09933874296d8375aa05381dadc0c5\transformed\transport-runtime-2.2.6\AndroidManifest.xml:29:13-69
+147        </service>
+148
+149        <receiver
+149-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\fb09933874296d8375aa05381dadc0c5\transformed\transport-runtime-2.2.6\AndroidManifest.xml:32:9-34:40
+150            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+150-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\fb09933874296d8375aa05381dadc0c5\transformed\transport-runtime-2.2.6\AndroidManifest.xml:33:13-132
+151            android:exported="false" />
+151-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ivaneke\.gradle\caches\8.10.2\transforms\fb09933874296d8375aa05381dadc0c5\transformed\transport-runtime-2.2.6\AndroidManifest.xml:34:13-37
+152    </application>
+153
+154</manifest>
