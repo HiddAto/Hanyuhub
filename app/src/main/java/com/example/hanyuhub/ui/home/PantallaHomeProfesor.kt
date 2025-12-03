@@ -279,7 +279,7 @@ fun PantallaHomeProfesor(
                     containerColor = Color(0xFFF38B84),
                     contentColor = Color(0xFFFFFFFF),
 
-                )
+                    )
             ) {
                 Icon(
                     Icons.AutoMirrored.Filled.MenuBook,

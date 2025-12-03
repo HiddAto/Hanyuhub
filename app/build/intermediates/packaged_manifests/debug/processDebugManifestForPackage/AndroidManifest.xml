@@ -8,15 +8,14 @@
         android:minSdkVersion="24"
         android:targetSdkVersion="35" />
 
-    <!-- Necesario para conexion API -->
+    <!-- Permisos -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
-    <!-- Necesario para solicitar permiso y uso de camara -->
+    <!-- Features -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <permission
         android:name="com.example.hanyuhub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -38,7 +37,6 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_hanyuhub_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.HanyuHub" >
         <activity
             android:name="com.example.hanyuhub.MainActivity"

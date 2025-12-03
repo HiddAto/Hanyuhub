@@ -43,6 +43,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hanyuhub.model.Tareas
@@ -154,6 +155,7 @@ fun PantallaAsignarTarea(
                         label = { Text("ID") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
 
                     Spacer(Modifier.height(8.dp))
@@ -169,6 +171,7 @@ fun PantallaAsignarTarea(
                         label = { Text("Titulo") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
 
                     Spacer(Modifier.height(8.dp))
@@ -184,6 +187,7 @@ fun PantallaAsignarTarea(
                         label = { Text("Descripción") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
 
                     Spacer(Modifier.height(8.dp))
@@ -199,6 +203,7 @@ fun PantallaAsignarTarea(
                         label = { Text("Fecha de publicación") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
 
                     Spacer(Modifier.height(8.dp))
@@ -214,6 +219,7 @@ fun PantallaAsignarTarea(
                         label = { Text("Fecha límite") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
 
                     Spacer(Modifier.height(8.dp))
@@ -229,6 +235,7 @@ fun PantallaAsignarTarea(
                         label = { Text("Contenido") },
                         singleLine = false,
                         modifier = Modifier.fillMaxWidth(),
+                        textStyle = TextStyle(color = Color.Black) // <--- esto cambia el color del texto
                     )
                 }
                 Spacer(Modifier.height(12.dp))

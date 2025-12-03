@@ -1,6 +1,7 @@
 package com.example.hanyuhub.ui.qr
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -16,58 +17,65 @@ import com.google.mlkit.vision.common.InputImage
 
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageProxy
+import androidx.camera.core.Preview
+import androidx.compose.runtime.remember
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.google.mlkit.vision.barcode.common.Barcode
 
 @SuppressLint("UnsafeOptInUsageError")
 @Composable
 fun CameraPreview(
     onQrScanned: (String) -> Unit
 ) {
-    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
+    val cameraProviderFuture = remember { ProcessCameraProvider.getInstance(context) }
+    var scanned = remember { false } // para disparar QR solo una vez
 
     AndroidView(
-        factory = { context ->
-            val previewView = PreviewView(context)
+        factory = { ctx ->
+            val previewView = androidx.camera.view.PreviewView(ctx)
 
-            val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
             cameraProviderFuture.addListener({
-                val provider = cameraProviderFuture.get()
+                val cameraProvider = cameraProviderFuture.get()
 
-                val preview = androidx.camera.core.Preview.Builder().build().also {
+                val preview = Preview.Builder().build().also {
                     it.setSurfaceProvider(previewView.surfaceProvider)
                 }
 
                 val selector = CameraSelector.DEFAULT_BACK_CAMERA
+
                 val scanner = BarcodeScanning.getClient()
 
-                val analysis = ImageAnalysis.Builder()
+                val imageAnalysis = ImageAnalysis.Builder()
                     .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                     .build()
-                    .also { imageAnalysis ->
-                        imageAnalysis.setAnalyzer(
-                            ContextCompat.getMainExecutor(context)
-                        ) { imageProxy ->
-                            // Se delega el procesado a la función que ya existe
-                            processImageProxy(
-                                imageProxy = imageProxy,
-                                scanner = scanner
-                            ) { valorQr ->
-                                onQrScanned(valorQr)
+                    .also { analysis ->
+                        analysis.setAnalyzer(ContextCompat.getMainExecutor(ctx)) { imageProxy ->
+                            Log.d("QRScanner", "Frame recibido") // <--- aquí log de cada frame
+                            processImageProxy(imageProxy, scanner) { value ->
+                                if (!scanned) {
+                                    scanned = true
+                                    Log.d("QRScanner", "QR detectado: $value") // <--- log QR
+                                    onQrScanned(value)
+                                }
                             }
                         }
                     }
 
                 try {
-                    provider.unbindAll()
-                    provider.bindToLifecycle(
+                    cameraProvider.unbindAll()
+                    cameraProvider.bindToLifecycle(
                         lifecycleOwner,
                         selector,
                         preview,
-                        analysis
+                        imageAnalysis
                     )
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
-            }, ContextCompat.getMainExecutor(context))
+
+            }, ContextCompat.getMainExecutor(ctx))
 
             previewView
         },
@@ -76,7 +84,6 @@ fun CameraPreview(
 }
 
 @androidx.annotation.OptIn(ExperimentalGetImage::class)
-@OptIn(ExperimentalGetImage::class)
 private fun processImageProxy(
     imageProxy: ImageProxy,
     scanner: com.google.mlkit.vision.barcode.BarcodeScanner,
@@ -92,7 +99,7 @@ private fun processImageProxy(
         scanner.process(image)
             .addOnSuccessListener { barcodes ->
                 for (barcode in barcodes) {
-                    if (barcode.format == com.google.mlkit.vision.barcode.common.Barcode.FORMAT_QR_CODE) {
+                    if (barcode.format == Barcode.FORMAT_QR_CODE) {
                         val rawValue = barcode.rawValue
                         if (!rawValue.isNullOrBlank()) {
                             onQrFound(rawValue)

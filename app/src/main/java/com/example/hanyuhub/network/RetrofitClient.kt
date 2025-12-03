@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "http://192.168.0.10:8080/" // tu backend usando wifi
+    private const val BASE_URL = "http://192.168.3.4:8080/" // tu backend usando wifi
     //private const val BASE_URL = "http://10.32.231.69:8080" // tu backend local con cable
 
     val apiService: ApiService by lazy {

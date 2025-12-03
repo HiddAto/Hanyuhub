@@ -93,7 +93,7 @@ fun PantallaTareas(
             androidx.compose.material3.TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFF58078),
-                    titleContentColor = Color(0xFF721313)
+                    titleContentColor = Color(0xFFFFFFFF)
                 ),
                 title = {
                     Text("MIS TAREAS", style = MaterialTheme.typography.headlineMedium)
@@ -103,7 +103,7 @@ fun PantallaTareas(
         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF721313)
+                contentColor = Color(0xFFFFFFFF)
             ) {
                 IconButton(onClick = {
                     navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso")
@@ -162,7 +162,8 @@ fun PantallaTareas(
                             .padding(24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text("No hay tareas disponibles", style = MaterialTheme.typography.bodyMedium)
+                        Text("No hay tareas disponibles", style = MaterialTheme.typography.bodyMedium,
+                            color = Color.Black)
                     }
                 } else {
                     tareas.forEach { tarea ->

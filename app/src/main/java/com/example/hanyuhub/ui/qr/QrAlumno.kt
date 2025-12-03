@@ -86,7 +86,7 @@ fun QrAlumnoScreen(
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFF58078),
-                    titleContentColor = Color(0xFF721313)
+                    titleContentColor = Color(0xFFFFFFFF)
                 ),
                 title = {
                     Text("Mi QR", style = MaterialTheme.typography.headlineMedium)
@@ -96,7 +96,7 @@ fun QrAlumnoScreen(
         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF721313)
+                contentColor = Color(0xFFFFFFFF)
             ) {
                 Button(
                     onClick = { navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso") },
@@ -128,7 +128,7 @@ fun QrAlumnoScreen(
                 "$nombre $apellido",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(bottom = 20.dp),
-                color = Color(0xFF4F0606)
+                color = Color(0xFFFFFFFF)
             )
 
             if (qrBitmap != null) {

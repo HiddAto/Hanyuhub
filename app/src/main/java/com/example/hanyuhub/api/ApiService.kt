@@ -64,7 +64,6 @@ interface ApiService {
         @Body palabra: Palabra
     ): Call<Palabra>
 
-
     // Crear tarea (solo profesores en backend)
     @POST("tareas/crear")
     suspend fun crearTarea(@Body tarea: Tareas): Response<Tareas>

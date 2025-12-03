@@ -57,10 +57,7 @@ fun QrScannerScreen(
                 title = { Text("Escanear QR") },
                 navigationIcon = {
                     IconButton(onClick = onClose) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Cerrar"
-                        )
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Cerrar")
                     }
                 }
             )
@@ -72,12 +69,14 @@ fun QrScannerScreen(
                 .padding(padding),
             contentAlignment = Alignment.Center
         ) {
-            if (hasCameraPermission) {
-                CameraPreview(
-                    onQrScanned = { value -> onQrScanned(value) }
-                )
-            } else {
-                Text("Se necesita permiso de cámara para escanear QR")
+            key(hasCameraPermission) {
+                if (hasCameraPermission) {
+                    CameraPreview(
+                        onQrScanned = onQrScanned
+                    )
+                } else {
+                    Text("Se necesita permiso de cámara para escanear QR")
+                }
             }
         }
     }
