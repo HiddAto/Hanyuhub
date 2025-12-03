@@ -33,6 +33,9 @@ import com.example.hanyuhub.ui.profesor.PantallaAsignarVocabulario
 import com.example.hanyuhub.ui.profesor.PantallaRevisarTareas
 import com.example.hanyuhub.ui.profesor.PantallaVocabularios
 import com.example.hanyuhub.ui.profesor.VistaCursoProfesor
+import com.example.hanyuhub.ui.qr.PerfilAlumnoQr
+import com.example.hanyuhub.ui.qr.QrAlumnoScreen
+import com.example.hanyuhub.ui.qr.QrProfesorScreen
 import com.example.hanyuhub.ui.register.PantallaRegistro
 import com.example.hanyuhub.ui.start.PantallaInicio
 import com.example.hanyuhub.ui.tarea.PantallaRevisarTarea
@@ -161,7 +164,7 @@ fun MyApp(){
         composable("crearApunte") { PantallaCrearApunte(navController) }
 
         composable(
-            "tareas/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            "tareasAlumno/{nombre}/{apellido}/{email}/{pass}/{curso}",
             arguments = listOf(
                 navArgument("nombre"){ type = NavType.StringType },
                 navArgument("apellido"){ type = NavType.StringType },
@@ -242,7 +245,6 @@ fun MyApp(){
 
         composable("misCursosProfesor") { MisCursosProfesor(navController) }
         composable("vistaCursoProfesor") { VistaCursoProfesor(navController) }
-        composable("asignarTarea") { PantallaAsignarTarea(navController) }
         composable("revisarTareas") { PantallaRevisarTareas(navController) }
         composable("asignarVocabulario") { PantallaAsignarVocabulario(navController) }
         composable("vocabulariosProfesor") { PantallaVocabularios(navController) }
@@ -317,6 +319,119 @@ fun MyApp(){
                 pass = pass,
                 curso = curso
             )
+        }
+
+        composable(
+            "qrAlumno/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("apellido") { type = NavType.StringType },
+                navArgument("email") { type = NavType.StringType },
+                navArgument("pass") { type = NavType.StringType },
+                navArgument("curso") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+
+            QrAlumnoScreen(
+                navController = navController,
+                nombre = nombre,
+                apellido = apellido,
+                email = email,
+                pass = pass,
+                curso = curso
+            )
+        }
+
+        composable(
+            "qrProfesor/{nombre}/{apellido}/{email}/{pass}/{cursos}",
+            arguments = listOf(
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("apellido") { type = NavType.StringType },
+                navArgument("email") { type = NavType.StringType },
+                navArgument("pass") { type = NavType.StringType },
+                navArgument("cursos") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val cursos = backStackEntry.arguments?.getString("cursos").orEmpty()
+
+            QrProfesorScreen(
+                navController = navController,
+                nombre = nombre,
+                apellido = apellido,
+                email = email,
+                pass = pass,
+                cursos = cursos
+            )
+        }
+
+        composable(
+            "perfilAlumnoQr/{aNombre}/{aApellido}/{aEmail}/{aPass}/{aCurso}/{pNombre}/{pApellido}/{pEmail}/{pPass}/{pCursos}",
+            arguments = listOf(
+                navArgument("aNombre"){ type = NavType.StringType },
+                navArgument("aApellido"){ type = NavType.StringType },
+                navArgument("aEmail"){ type = NavType.StringType },
+                navArgument("aPass"){ type = NavType.StringType },
+                navArgument("aCurso"){ type = NavType.StringType },
+                navArgument("pNombre"){ type = NavType.StringType },
+                navArgument("pApellido"){ type = NavType.StringType },
+                navArgument("pEmail"){ type = NavType.StringType },
+                navArgument("pPass"){ type = NavType.StringType },
+                navArgument("pCursos"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val aNombre = backStackEntry.arguments?.getString("aNombre").orEmpty()
+            val aApellido = backStackEntry.arguments?.getString("aApellido").orEmpty()
+            val aEmail = backStackEntry.arguments?.getString("aEmail").orEmpty()
+            val aPass = backStackEntry.arguments?.getString("aPass").orEmpty()
+            val aCurso = backStackEntry.arguments?.getString("aCurso").orEmpty()
+
+            val pNombre = backStackEntry.arguments?.getString("pNombre").orEmpty()
+            val pApellido = backStackEntry.arguments?.getString("pApellido").orEmpty()
+            val pEmail = backStackEntry.arguments?.getString("pEmail").orEmpty()
+            val pPass = backStackEntry.arguments?.getString("pPass").orEmpty()
+            val pCursos = backStackEntry.arguments?.getString("pCursos").orEmpty()
+
+            PerfilAlumnoQr(
+                navController = navController,
+                nombre = aNombre,
+                apellido = aApellido,
+                email = aEmail,
+                pass = aPass,
+                curso = aCurso,
+                profNombre = pNombre,
+                profApellido = pApellido,
+                profEmail = pEmail,
+                profPass = pPass,
+                profCursos = pCursos
+            )
+        }
+
+        composable(
+            "tareasProfesor/{nombre}/{apellido}/{email}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("nombre"){ type = NavType.StringType },
+                navArgument("apellido"){ type = NavType.StringType },
+                navArgument("email"){ type = NavType.StringType },
+                navArgument("pass"){ type = NavType.StringType },
+                navArgument("curso"){ type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre").orEmpty()
+            val apellido = backStackEntry.arguments?.getString("apellido").orEmpty()
+            val email = backStackEntry.arguments?.getString("email").orEmpty()
+            val pass = backStackEntry.arguments?.getString("pass").orEmpty()
+            val curso = backStackEntry.arguments?.getString("curso").orEmpty()
+            PantallaAsignarTarea(navController, nombre, apellido, email, pass, curso)
         }
 
     }

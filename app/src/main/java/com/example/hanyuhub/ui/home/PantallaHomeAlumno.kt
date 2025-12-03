@@ -211,7 +211,7 @@ fun PantallaHomeAlumno(
             }
 
             OutlinedButton(
-                onClick = { navController.navigate("tareas/$nombre/$apellido/$email/$pass/$curso") },
+                onClick = { navController.navigate("tareasAlumno/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -291,7 +291,7 @@ fun PantallaHomeAlumno(
             }
 
             OutlinedButton(
-                onClick = { navController.navigate("foro/$nombre/$apellido/$email/$pass/$curso") },
+                onClick = { navController.navigate("qrAlumno/$nombre/$apellido/$email/$pass/$curso") },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -305,10 +305,10 @@ fun PantallaHomeAlumno(
             ) {
                 Icon(
                     Icons.Default.PeopleAlt,
-                    contentDescription = "Foro",
+                    contentDescription = "QR",
                     modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.width(10.dp))
-                Text("Foro",
+                Text("QR Usuario",
                     modifier = Modifier.padding(start = 8.dp),
                     style = TextStyle(
                         color = Color(0xFF721313),
