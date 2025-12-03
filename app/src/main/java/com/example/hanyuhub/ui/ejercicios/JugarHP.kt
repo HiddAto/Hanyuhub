@@ -55,7 +55,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun JugarHS(
+fun JugarHP(
     navController: NavController,
     idColeccion: Long,
     email: String,
@@ -72,10 +72,10 @@ fun JugarHS(
     }
 
     var hanziList by remember(palabras) { mutableStateOf(palabras.map { it.hanzi }.shuffled()) }
-    var significadoList by remember(palabras) { mutableStateOf(palabras.map { it.significado }.shuffled()) }
+    var pinyinList by remember(palabras) { mutableStateOf(palabras.map { it.pinyin }.shuffled()) }
 
     var seleccionHanzi by remember { mutableStateOf<String?>(null) }
-    var seleccionSignificado by remember { mutableStateOf<String?>(null) }
+    var seleccionPinyin by remember { mutableStateOf<String?>(null) }
 
     var mostrarModal by remember { mutableStateOf(false) }
     var modalMensaje by remember { mutableStateOf("") }
@@ -90,7 +90,7 @@ fun JugarHS(
                     containerColor = Color(0xFFF58078),
                     titleContentColor = Color(0xFFFFFFFF)
                 ),
-                title = { Text("Match: Hanzi = Significado") },
+                title = { Text("Match: Hanzi = Pinyin") },
                 navigationIcon = {
                     IconButton(onClick = {
                         navController.navigate("MatchHS/$email/$nombre/$apellido/$pass/$curso")
@@ -120,7 +120,7 @@ fun JugarHS(
                 }
 
                 Text(
-                    "Selecciona un Hanzi y luego su Significado",
+                    "Selecciona un Hanzi y luego su Pinyin",
                     style = MaterialTheme.typography.titleMedium,
                     color = Color(0xFF1A1A1A)
                 )
@@ -158,26 +158,26 @@ fun JugarHS(
 
                     Spacer(modifier = Modifier.width(8.dp))
 
-                    // Columna Significados
+                    // Columna Pinyin
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            "SIGNIFICADO", fontSize = 18.sp, fontWeight = FontWeight.Bold,
+                            "PINYIN", fontSize = 18.sp, fontWeight = FontWeight.Bold,
                             color = Color(0xFF1A1A1A)
                         )
 
-                        significadoList.forEach { s ->
+                        pinyinList.forEach { p ->
                             Button(
-                                onClick = { seleccionSignificado = s },
+                                onClick = { seleccionPinyin = p },
                                 modifier = Modifier
                                     .padding(4.dp)
                                     .fillMaxWidth(),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor =
-                                        if (seleccionSignificado == s) Color(0xFF87D78F) // más oscuro
+                                        if (seleccionPinyin == p) Color(0xFF87D78F) // más oscuro
                                         else Color(0xFFE7FFE2)
                                 )
                             ) {
-                                Text(s)
+                                Text(p)
                             }
                         }
                     }
@@ -189,13 +189,13 @@ fun JugarHS(
             // Botón flotante validar
             FloatingActionButton(
                 onClick = {
-                    if (seleccionHanzi != null && seleccionSignificado != null) {
+                    if (seleccionHanzi != null && seleccionPinyin != null) {
                         val palabra = palabras.find { it.hanzi == seleccionHanzi }
-                        if (palabra?.significado == seleccionSignificado) {
+                        if (palabra?.pinyin == seleccionPinyin) {
                             modalMensaje = "✔ ¡Correcto!"
                             modalColor = Color(0xFF1B5E20)
                             hanziList = hanziList.filterNot { it == seleccionHanzi }
-                            significadoList = significadoList.filterNot { it == seleccionSignificado }
+                            pinyinList = pinyinList.filterNot { it == seleccionPinyin }
                         } else {
                             modalMensaje = "✖ Incorrecto"
                             modalColor = Color(0xFFB71C1C)
@@ -203,7 +203,7 @@ fun JugarHS(
 
                         mostrarModal = true
                         seleccionHanzi = null
-                        seleccionSignificado = null
+                        seleccionPinyin = null
 
                         scope.launch {
                             delay(1000)
@@ -247,6 +247,3 @@ fun JugarHS(
         }
     }
 }
-
-
-

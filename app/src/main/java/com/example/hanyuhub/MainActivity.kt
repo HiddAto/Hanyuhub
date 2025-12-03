@@ -22,7 +22,9 @@ import com.example.hanyuhub.ui.apunte.PantallaApuntes
 import com.example.hanyuhub.ui.apunte.PantallaApuntesDummy
 import com.example.hanyuhub.ui.apunte.PantallaCrearApunte
 import com.example.hanyuhub.ui.apunte.PantallaEditarApunteDummy
+import com.example.hanyuhub.ui.ejercicios.JugarHP
 import com.example.hanyuhub.ui.ejercicios.JugarHS
+import com.example.hanyuhub.ui.ejercicios.MatchHP
 import com.example.hanyuhub.ui.ejercicios.MatchHS
 import com.example.hanyuhub.ui.ejercicios.PantallaEjercicios
 import com.example.hanyuhub.ui.foro.PantallaCrearPost
@@ -418,6 +420,56 @@ fun MyApp() {
             val curso = backStack.arguments?.getString("curso") ?: ""
 
             JugarHS(
+                navController,
+                idColeccion,
+                email,
+                nombre,
+                apellido,
+                pass,
+                curso
+            )
+        }
+
+        composable(
+            route = "MatchHP/{email}/{nombre}/{apellido}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("email") { type = NavType.StringType },
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("apellido") { type = NavType.StringType },
+                navArgument("pass") { type = NavType.StringType },
+                navArgument("curso") { type = NavType.StringType }
+            )
+        ) {
+            MatchHP(
+                navController,
+                it.arguments!!.getString("email")!!,
+                it.arguments!!.getString("nombre")!!,
+                it.arguments!!.getString("apellido")!!,
+                it.arguments!!.getString("pass")!!,
+                it.arguments!!.getString("curso")!!
+            )
+        }
+
+        composable(
+            route = "JugarHP/{idColeccion}/{email}/{nombre}/{apellido}/{pass}/{curso}",
+            arguments = listOf(
+                navArgument("idColeccion") { type = NavType.LongType },
+                navArgument("email") { type = NavType.StringType },
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("apellido") { type = NavType.StringType },
+                navArgument("pass") { type = NavType.StringType },
+                navArgument("curso") { type = NavType.StringType }
+            )
+        ) { backStack ->
+
+            val idColeccion = backStack.arguments?.getLong("idColeccion") ?: 0L
+            val email = backStack.arguments?.getString("email") ?: ""
+            val nombre = backStack.arguments?.getString("nombre") ?: ""
+            val apellido = backStack.arguments?.getString("apellido") ?: ""
+            val pass = backStack.arguments?.getString("pass") ?: ""
+            val curso = backStack.arguments?.getString("curso") ?: ""
+
+            JugarHP(
                 navController,
                 idColeccion,
                 email,

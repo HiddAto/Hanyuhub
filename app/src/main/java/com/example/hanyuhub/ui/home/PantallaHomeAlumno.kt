@@ -87,11 +87,11 @@ fun PantallaHomeAlumno(
                 colors = topAppBarColors(
                     containerColor = Color(0xFFF58078),
                     scrolledContainerColor = Color(0xFFF58078),
-                    titleContentColor = Color(0xFF721313)
+                    titleContentColor = Color(0xFFFFFFFF)
                 ),
                 title = {
                     Text(
-                        "¡Bienvenid@ $nombre $apellido!",
+                        "¡Nǐ Hǎo, $nombre $apellido!",
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -102,7 +102,7 @@ fun PantallaHomeAlumno(
         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF721313)
+                contentColor = Color(0xFFFFFFFF)
             ) {
                 // Estado para mostrar el diálogo de confirmación
                 var mostrarDialogoSalir by remember { mutableStateOf(false) }
@@ -246,8 +246,8 @@ fun PantallaHomeAlumno(
                 shape = RoundedCornerShape(20.dp),
 
                 colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color(0xFF8C73B4),
-                    contentColor = Color(0xFF200C44),
+                    containerColor = Color(0xFFE8407B),
+                    contentColor = Color(0xFFFFFFFF),
                 )
             ) {
                 Icon(Icons.Default.Games,
@@ -273,7 +273,7 @@ fun PantallaHomeAlumno(
 
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = Color(0xFFF38B84),
-                    contentColor = Color(0xFF721313),
+                    contentColor = Color(0xFFFFFFFF),
                 )
             ) {
                 Icon(

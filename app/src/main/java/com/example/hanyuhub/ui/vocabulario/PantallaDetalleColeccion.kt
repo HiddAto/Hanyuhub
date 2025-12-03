@@ -124,7 +124,7 @@ fun PantallaDetalleColeccion(
                     Row(modifier = Modifier.padding(5.dp)) {
                         Icon(Icons.Default.Delete, contentDescription = "Eliminar")
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("Eliminar Colección Completamente")
+                        Text("")
                     }
                 }
 
@@ -141,7 +141,7 @@ fun PantallaDetalleColeccion(
                     Row(modifier = Modifier.padding(5.dp)) {
                         Icon(Icons.Default.Add, contentDescription = "Add")
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("Agregar Palabra a la Colección")
+                        Text("")
                     }
                 }
             }

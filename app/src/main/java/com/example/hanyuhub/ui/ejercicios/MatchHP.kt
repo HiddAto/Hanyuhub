@@ -44,7 +44,7 @@ import com.example.hanyuhub.viewmodel.ColeccionViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MatchHS(
+fun MatchHP(
     navController: NavController,
     email: String,
     nombre: String,
@@ -128,7 +128,7 @@ fun MatchHS(
                     onClick = {
                         val idColeccion = coleccion.id
                         navController.navigate(
-                            "JugarHS/$idColeccion/$email/$nombre/$apellido/$pass/$curso"
+                            "JugarHP/$idColeccion/$email/$nombre/$apellido/$pass/$curso"
                         )
                     },
                     modifier = Modifier
@@ -137,7 +137,7 @@ fun MatchHS(
                         .height(80.dp),
                     shape = RoundedCornerShape(20.dp),
                     colors = ButtonDefaults.outlinedButtonColors(
-                        containerColor = Color(0xFF714AA2),
+                        containerColor = Color(0xFF3A4AA8),
                         contentColor = Color(0xFFFFFFFF),
                     )
                 ) {
@@ -158,9 +158,9 @@ fun MatchHS(
                         )
                     }
                 }
-            }
 
-            Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(40.dp))
+            }
         }
     }
 }

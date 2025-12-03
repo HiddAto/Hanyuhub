@@ -67,7 +67,7 @@ fun PantallaColecciones(
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFF58078),
-                    titleContentColor = Color(0xFF721313)
+                    titleContentColor = Color(0xFFFFFFFF)
                 ),
                 title = {
                     Text("Mis Colecciones", style = MaterialTheme.typography.headlineMedium)
@@ -77,7 +77,7 @@ fun PantallaColecciones(
         bottomBar = {
             BottomAppBar(
                 containerColor = Color(0xFFF58078),
-                contentColor = Color(0xFF721313)
+                contentColor = Color(0xFFFFFFFF)
             ) {
                 // Botón de volver
                 IconButton(onClick = { navController.navigate("homeAlumno/$nombre/$apellido/$email/$pass/$curso") }) {
@@ -106,7 +106,7 @@ fun PantallaColecciones(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { navController.navigate("crearColeccion/$nombre/$apellido/$email/$pass/$curso/$email") },
-                containerColor = Color(0xFFFFC6C1),
+                containerColor = Color(0xFFE7DDDD),
                 contentColor = Color(0xFF4F0606)
             ) {
                 Row(modifier = Modifier.padding(5.dp)) {

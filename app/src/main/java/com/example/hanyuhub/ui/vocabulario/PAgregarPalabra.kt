@@ -62,7 +62,7 @@ fun PAgregarPalabra(
                     titleContentColor = Color(0xFF721313)
                 ),
                 title = {
-                    Text("Agregar una nueva palabra a la colección: {$nombreColeccion}", style = MaterialTheme.typography.headlineMedium)
+                    Text("Agregar una nueva palabra a la colección: $nombreColeccion", style = MaterialTheme.typography.headlineMedium)
                 },
             )
         },
