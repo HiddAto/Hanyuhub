@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.hanyuhub.LoginUseCaseTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-12-11T14:49:04" hostname="HIDDORO" time="2.203">
+  <properties/>
+  <testcase name="email_vacio" classname="com.example.hanyuhub.LoginUseCaseTest" time="1.766"/>
+  <testcase name="usuario_null" classname="com.example.hanyuhub.LoginUseCaseTest" time="0.416"/>
+  <testcase name="pass_vacio" classname="com.example.hanyuhub.LoginUseCaseTest" time="0.003"/>
+  <testcase name="rol_incorrecto" classname="com.example.hanyuhub.LoginUseCaseTest" time="0.007"/>
+  <testcase name="login_estudiante_ok" classname="com.example.hanyuhub.LoginUseCaseTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\anton\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.15.11\a38b16385e867f59a641330f0362ebe742788ed8\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
