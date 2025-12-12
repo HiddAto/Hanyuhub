@@ -88,4 +88,9 @@ dependencies {
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
 
     implementation("com.google.zxing:core:3.5.1")
+
+    // Dependencias para test MockK + JUnit
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("io.mockk:mockk:1.14.5")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
 }
